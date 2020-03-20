@@ -8,18 +8,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('fonts/circular-std/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
     <link rel="stylesheet" href="/libs/css/style.css">
-    <link rel="stylesheet" href="/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="/vendor/charts/chartist-bundle/chartist.css">
-    <link rel="stylesheet" href="/vendor/charts/morris-bundle/morris.css">
     <link rel="stylesheet" href="/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="/vendor/fonts/flag-icon-css/flag-icon.min.css">
- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.dataTables.min.css">
- <!--   <link rel="stylesheet" href="/vendor/datatables/css/buttons.bootstrap4.css">-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.dataTables.min.css">
+    <!--   <link rel="stylesheet" href="/vendor/datatables/css/buttons.bootstrap4.css">-->
      <link rel="stylesheet" href="{{URL::asset('js/lightgallery.css')}}">
     <link rel="stylesheet" href="{{URL::asset('js/style.css')}}">
     

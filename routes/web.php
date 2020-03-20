@@ -29,7 +29,21 @@ Route::get('/', function () {
     }
 });
 
+Route::get('/customer/login', function(){
+        $showSignup = true;
+        return view('auth.login', compact('showSignup'));
+})->name('customer.login');
+
 Auth::routes();
+
+
+Route::group([
+    'middleware' => [
+        'user.customer',
+    ],
+], function(){
+
+
 
 Route::get('/admin/dashboard', function(){
          $users = User::where('is_verified','!=','no')->count();
@@ -40,6 +54,15 @@ Route::get('/admin/users',function(){
         $users = User::where('user_type','!=',1)->get();
         return view('admin.manage_users',compact('users'));
 });
+
+
+
+
+});
+
+
+
+
 
 Route::get('/admin/market',function(){
         $categories = Market::all();
@@ -79,4 +102,11 @@ Route::get('/clear-cache', function() {
 });
 
 
- 
+Route::get('/{any}', function (){
+
+    $markets = Market::where('user_id', request()->user()->id)->get();
+    $markets = Market::all();
+    return view('layouts.master', compact('markets'));
+})->where('any', '.*');
+
+
