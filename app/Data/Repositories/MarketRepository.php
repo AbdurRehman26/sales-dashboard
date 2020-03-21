@@ -57,8 +57,35 @@ class MarketRepository extends AbstractRepository implements RepositoryContract
      */
     public function findById($id, $refresh = false, $details = false, $encode = true)
     {
+
         $data = parent::findById($id, $refresh, $details, $encode);
         $data->formatted_created_at = \Carbon\Carbon::parse($data->created_at)->diffForHumans();
+        $data->username = app('UserRepository')->findById($data->user_id)->name;
+        $data->market_type_name = app('MarketTypeRepository')->findById($data->market_type)->name;
+
         return $data;
     }
+
+
+        /**
+     *
+     * This method will fetch all exsiting models
+     * and will return output back to client as json
+     *
+     * @access public
+     * @return mixed
+     *
+     * @author Usaama Effendi <usaamaeffendi@gmail.com>
+     *
+     **/
+    public function findByAll($pagination = false, $perPage = 10, array $input = [] ) {
+     
+        if(!request()->user()->user_type){
+            $this->builder = $this->model->where('user_id', request()->user()->id);
+        }
+
+        return parent::findByAll($pagination, $perPage, $input);
+
+    }
+
 }

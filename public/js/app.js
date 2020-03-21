@@ -16490,7 +16490,7 @@ module.exports = Cancel;
 /* unused harmony export install */
 /* unused harmony export mapState */
 /* unused harmony export mapMutations */
-/* unused harmony export mapGetters */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapGetters; });
 /* unused harmony export mapActions */
 /* unused harmony export createNamespacedHelpers */
 /**
@@ -112118,153 +112118,233 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" },
+        [
+          !_vm.showCreate
+            ? _c(
+                "a",
+                {
+                  staticClass: "btn btn-success mb-4",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.showCreate = true
+                    }
+                  }
+                },
+                [_vm._v("Create")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.showCreate
+            ? _c(
+                "a",
+                {
+                  staticClass: "btn btn-info mb-4",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.showCreate = false
+                    }
+                  }
+                },
+                [_vm._v("Back List")]
+              )
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" },
+        [
+          _vm.showCreate ? _c("create-market") : _vm._e(),
+          _vm._v(" "),
+          !_vm.showCreate
+            ? _c("div", { staticClass: "card" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c(
+                      "table",
+                      {
+                        staticClass:
+                          "table table-striped table-bordered second",
+                        staticStyle: { width: "100%" },
+                        attrs: { id: "example" }
+                      },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.items, function(item) {
+                            return _c("tr", [
+                              _c("td", [_vm._v(_vm._s(item.market_name))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.market_type_name))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.market_owner))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t\t\t" +
+                                    _vm._s(item.market_owner) +
+                                    "\n\t\t\t\t\t\t\t\t\t"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.owner_email))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.owner_phone))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t\t\t" +
+                                    _vm._s(item.owner_address) +
+                                    "\n\t\t\t\t\t\t\t\t\t"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.status))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.notes))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.color))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.other))]),
+                              _vm._v(" "),
+                              _vm._m(2, true),
+                              _vm._v(" "),
+                              _vm._m(3, true),
+                              _vm._v(" "),
+                              _vm._m(4, true),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(item.formatted_created_at))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(item.formatted_created_at))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(5, true)
+                            ])
+                          }),
+                          0
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            : _vm._e()
+        ],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" },
-          [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-header" }, [
-                _c("h4", { staticClass: "mb-0" }, [
-                  _vm._v("\n\t\t\t\t\t\tAll Markets\n\t\t\t\t\t\t"),
-                  _c("span", { staticClass: "float-right" })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "table-responsive" }, [
-                  _c(
-                    "table",
-                    {
-                      staticClass: "table table-striped table-bordered second",
-                      staticStyle: { width: "100%" },
-                      attrs: { id: "example" }
-                    },
-                    [
-                      _c("thead", [
-                        _c("tr", [
-                          _c("th", [_vm._v("Market Name")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Market ype")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("User Name")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Market Owner")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Owner Email")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Owner Phone")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Owner Address")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Status")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Notes")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Color")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("other")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("image")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("pdf")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("audio")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Create Date")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Update Date")]),
-                          _vm._v(" "),
-                          _c("th")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("tbody", [
-                        _c("tr", [
-                          _c("td", [_vm._v('"market_name"')]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v('"market_type"')]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v('"user_name"')]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              '\n\t\t\t\t\t\t\t\t\t\t"market_owner"\n\t\t\t\t\t\t\t\t\t'
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v('"owner_email"')]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v('"owner_phone"')]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              '\n\t\t\t\t\t\t\t\t\t\t"owner_address"\n\t\t\t\t\t\t\t\t\t'
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v('"status"')]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v('"notes"')]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v('"color"')]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v('"other"')]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c("a", { attrs: { href: "/admin/img/123" } }, [
-                              _vm._v('"img" ')
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c("a", { attrs: { href: "/admin/viewpdf/123" } }, [
-                              _vm._v(
-                                '\n\t\t\t\t\t\t\t\t\t\t\t"pdf"\n\t\t\t\t\t\t\t\t\t\t'
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c(
-                              "a",
-                              { attrs: { href: "/admin/viewaudio/123" } },
-                              [_vm._v('"audio"\n\t\t\t\t\t\t\t\t\t\t')]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v('"123"')]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v('"123"')]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "btn btn-danger",
-                                attrs: { href: "/admin/delete-market/12312" }
-                              },
-                              [_vm._v("Delete")]
-                            )
-                          ])
-                        ])
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ])
-          ]
-        )
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h4", { staticClass: "mb-0" }, [
+        _vm._v("\n\t\t\t\t\t\tAll Markets\n\t\t\t\t\t\t"),
+        _c("span", { staticClass: "float-right" })
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Market Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Market ype")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("User Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Market Owner")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Owner Email")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Owner Phone")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Owner Address")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Notes")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Color")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("other")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("image")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("pdf")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("audio")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Create Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Update Date")]),
+        _vm._v(" "),
+        _c("th")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { attrs: { href: "/admin/img/123" } }, [_vm._v('"img" ')])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { attrs: { href: "/admin/viewpdf/123" } }, [
+        _vm._v('\n\t\t\t\t\t\t\t\t\t\t\t"pdf"\n\t\t\t\t\t\t\t\t\t\t')
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { attrs: { href: "/admin/viewaudio/123" } }, [
+        _vm._v('"audio"\n\t\t\t\t\t\t\t\t\t\t')
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { href: "/admin/delete-market/12312" }
+        },
+        [_vm._v("Delete")]
+      )
     ])
   }
 ]
@@ -112286,10 +112366,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_resource__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_dashboard_Create__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_dashboard_Create___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_dashboard_Create__);
 
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -112383,15 +112482,22 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 var marketResource = new __WEBPACK_IMPORTED_MODULE_1__api_resource__["a" /* default */]("api/market");
 
+
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-	components: {},
+	components: {
+		CreateMarket: __WEBPACK_IMPORTED_MODULE_3__components_dashboard_Create___default.a
+	},
 	/*
         |--------------------------------------------------------------------------
         | Component > props
         |--------------------------------------------------------------------------
         */
 	props: {
-		item: {}
+		item: {},
+		showCreate: false
 	}, // End of Component > props
 	/*
         |--------------------------------------------------------------------------
@@ -112409,7 +112515,7 @@ var marketResource = new __WEBPACK_IMPORTED_MODULE_1__api_resource__["a" /* defa
         | Component > computed
         |--------------------------------------------------------------------------
         */
-	computed: {}, // End of Component > computed
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(["user"])), // End of Component > computed
 	/*
         |--------------------------------------------------------------------------
         | Component > methods
@@ -112428,6 +112534,7 @@ var marketResource = new __WEBPACK_IMPORTED_MODULE_1__api_resource__["a" /* defa
 
 							case 2:
 								response = _context.sent;
+
 
 								this.items = response.data;
 
@@ -112532,6 +112639,178 @@ var Resource = function () {
 }();
 
 
+
+/***/ }),
+/* 229 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(53)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(230)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/dashboard/Create.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3398178e", Component.options)
+  } else {
+    hotAPI.reload("data-v-3398178e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 230 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card" }, [
+      _c("h5", { staticClass: "card-header" }, [_vm._v("Create Message")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "form",
+          {
+            staticClass: "needs-validation",
+            attrs: {
+              method: "POST",
+              action: "/admin/fcm",
+              enctype: "multipart/form-data"
+            }
+          },
+          [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                },
+                [
+                  _c("label", { attrs: { for: "validationCustom01" } }, [
+                    _vm._v("Message Heading")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "validationCustom01",
+                      name: "heading",
+                      placeholder: "Message Heading",
+                      required: ""
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "valid-feedback" }, [
+                    _vm._v("\n\t\t\t\t\t\tLooks good!\n\t\t\t\t\t")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2"
+                },
+                [
+                  _c("label", { attrs: { for: "validationCustom05" } }, [
+                    _vm._v("Message Content")
+                  ]),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    staticClass: "form-control",
+                    attrs: {
+                      rows: "4",
+                      cols: "50",
+                      id: "validationCustom05",
+                      placeholder: "type content here ...",
+                      name: "content"
+                    }
+                  })
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "submit" }
+                    },
+                    [_vm._v("\n\t\t\t\t\t\tSubmit form\n\t\t\t\t\t")]
+                  )
+                ]
+              )
+            ])
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3398178e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -24,9 +24,14 @@ Route::get('getPoints', 'ApiController@getPoints');
 
 Route::resource('market', 'Api\V1\MarketController')->except([
 	'edit'
-]);
+])->middleware('jwt.auth');
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::resource('user', 'Api\V1\UserController')->except([
+             'edit'
+        ]);Route::resource('markettype', 'Api\V1\MarketTypeController')->except([
+             'edit'
+        ]);

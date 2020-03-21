@@ -167,7 +167,13 @@ return [
         /*
          * Package Service Providers...
          */
+        Kazmi\Providers\ResourceCommandServiceProvider::class,
+        /*
+         * Custom Service Providers...
+         */
         App\Providers\MarketRepositoryServiceProvider::class,
+        App\Providers\MarketTypeRepositoryServiceProvider::class,
+        App\Providers\UserRepositoryServiceProvider::class,
 
         /*
          * Application Service Providers...

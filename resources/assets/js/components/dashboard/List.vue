@@ -1,8 +1,20 @@
 <template>
 	<div>
 		<div class="row">
+
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<div class="card">
+
+			<a v-if="!showCreate" class="btn btn-success mb-4" @click.prevent="showCreate = true">Create</a>
+			<a v-if="showCreate" class="btn btn-info mb-4" @click.prevent="showCreate = false">Back List</a>
+
+			</div>
+			
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				
+				<create-market v-if="showCreate"></create-market>
+
+
+				<div v-if="!showCreate" class="card">
 					<div class="card-header">
 						<h4 class="mb-0">
 							All Markets
@@ -38,22 +50,22 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>"market_name"</td>
-										<td>"market_type"</td>
-										<td>"user_name"</td>
+									<tr v-for="item in items">
+										<td>{{ item.market_name }}</td>
+										<td>{{ item.market_type_name }}</td>
+										<td>{{ item.market_owner }}</td>
 										<td>
-											"market_owner"
+											{{ item.market_owner }}
 										</td>
-										<td>"owner_email"</td>
-										<td>"owner_phone"</td>
+										<td>{{ item.owner_email }}</td>
+										<td>{{ item.owner_phone }}</td>
 										<td>
-											"owner_address"
+											{{ item.owner_address }}
 										</td>
-										<td>"status"</td>
-										<td>"notes"</td>
-										<td>"color"</td>
-										<td>"other"</td>
+										<td>{{ item.status }}</td>
+										<td>{{ item.notes }}</td>
+										<td>{{ item.color }}</td>
+										<td>{{ item.other }}</td>
 										<td>
 											<a href="/admin/img/123">"img" </a>
 										</td>
@@ -67,8 +79,8 @@
 												>"audio"
 											</a>
 										</td>
-										<td>"123"</td>
-										<td>"123"</td>
+										<td>{{ item.formatted_created_at }}</td>
+										<td>{{ item.formatted_created_at }}</td>
 										<td>
 											<a
 												class="btn btn-danger"
@@ -82,6 +94,8 @@
 						</div>
 					</div>
 				</div>
+
+
 			</div>
 		</div>
 	</div>
@@ -91,15 +105,23 @@
 import Resource from "@/api/resource";
 const marketResource = new Resource("api/market");
 
+import { mapGetters } from "vuex";
+
+
+import CreateMarket from "@/components/dashboard/Create"
+
 export default {
-	components: {},
+	components: {
+		CreateMarket
+	},
 	/*
         |--------------------------------------------------------------------------
         | Component > props
         |--------------------------------------------------------------------------
         */
 	props: {
-		item: {}
+		item: {},
+		showCreate: false
 	}, // End of Component > props
 	/*
         |--------------------------------------------------------------------------
@@ -116,7 +138,9 @@ export default {
         | Component > computed
         |--------------------------------------------------------------------------
         */
-	computed: {}, // End of Component > computed
+	computed: {
+		...mapGetters(["user"])
+	}, // End of Component > computed
 	/*
         |--------------------------------------------------------------------------
         | Component > methods
@@ -124,9 +148,8 @@ export default {
         */
 	methods: {
 		async getList() {
-
-
 			const response = await marketResource.list();
+
 			this.items = response.data;
 
 			this.isLoading = false;
