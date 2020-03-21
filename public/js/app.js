@@ -112070,7 +112070,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(53)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(227)
 /* template */
 var __vue_template__ = __webpack_require__(226)
 /* template functional */
@@ -112276,6 +112276,262 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-6704bcb0", module.exports)
   }
 }
+
+/***/ }),
+/* 227 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_resource__ = __webpack_require__(228);
+
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+var marketResource = new __WEBPACK_IMPORTED_MODULE_1__api_resource__["a" /* default */]("api/market");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	components: {},
+	/*
+        |--------------------------------------------------------------------------
+        | Component > props
+        |--------------------------------------------------------------------------
+        */
+	props: {
+		item: {}
+	}, // End of Component > props
+	/*
+        |--------------------------------------------------------------------------
+        | Component > data
+        |--------------------------------------------------------------------------
+        */
+	data: function data() {
+		return {
+			items: []
+		};
+	},
+	// End of Component > data
+	/*
+        |--------------------------------------------------------------------------
+        | Component > computed
+        |--------------------------------------------------------------------------
+        */
+	computed: {}, // End of Component > computed
+	/*
+        |--------------------------------------------------------------------------
+        | Component > methods
+        |--------------------------------------------------------------------------
+        */
+	methods: {
+		getList: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+				var response;
+				return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_context.next = 2;
+								return marketResource.list();
+
+							case 2:
+								response = _context.sent;
+
+								this.items = response.data;
+
+								this.isLoading = false;
+
+							case 5:
+							case "end":
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
+
+			function getList() {
+				return _ref.apply(this, arguments);
+			}
+
+			return getList;
+		}()
+	}, // End of Component > methods
+	/*
+        |--------------------------------------------------------------------------
+        | Component > mounted
+        |--------------------------------------------------------------------------
+        */
+	mounted: function mounted() {
+		this.getList();
+	} // End of Component > mounted
+
+}); // End of export default
+
+/***/ }),
+/* 228 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Resource; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_request__ = __webpack_require__(120);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+/**
+ * Simple RESTful resource class
+ */
+
+var Resource = function () {
+  function Resource(uri) {
+    _classCallCheck(this, Resource);
+
+    this.uri = uri;
+  }
+
+  _createClass(Resource, [{
+    key: 'list',
+    value: function list(query) {
+      return Object(__WEBPACK_IMPORTED_MODULE_0__utils_request__["a" /* default */])({
+        url: '/' + this.uri,
+        method: 'get',
+        params: query
+      });
+    }
+  }, {
+    key: 'get',
+    value: function get(id) {
+      return Object(__WEBPACK_IMPORTED_MODULE_0__utils_request__["a" /* default */])({
+        url: '/' + this.uri + '/' + id,
+        method: 'get'
+      });
+    }
+  }, {
+    key: 'store',
+    value: function store(resource) {
+      return Object(__WEBPACK_IMPORTED_MODULE_0__utils_request__["a" /* default */])({
+        url: '/' + this.uri,
+        method: 'post',
+        data: resource
+      });
+    }
+  }, {
+    key: 'update',
+    value: function update(id, resource) {
+      return Object(__WEBPACK_IMPORTED_MODULE_0__utils_request__["a" /* default */])({
+        url: '/' + this.uri + '/' + id,
+        method: 'put',
+        data: resource
+      });
+    }
+  }, {
+    key: 'destroy',
+    value: function destroy(id) {
+      return Object(__WEBPACK_IMPORTED_MODULE_0__utils_request__["a" /* default */])({
+        url: '/' + this.uri + '/' + id,
+        method: 'delete'
+      });
+    }
+  }]);
+
+  return Resource;
+}();
+
+
 
 /***/ })
 /******/ ]);

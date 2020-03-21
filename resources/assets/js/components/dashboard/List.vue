@@ -86,3 +86,59 @@
 		</div>
 	</div>
 </template>
+
+<script>
+import Resource from "@/api/resource";
+const marketResource = new Resource("api/market");
+
+export default {
+	components: {},
+	/*
+        |--------------------------------------------------------------------------
+        | Component > props
+        |--------------------------------------------------------------------------
+        */
+	props: {
+		item: {}
+	}, // End of Component > props
+	/*
+        |--------------------------------------------------------------------------
+        | Component > data
+        |--------------------------------------------------------------------------
+        */
+	data() {
+		return {
+			items: []
+		};
+	}, // End of Component > data
+	/*
+        |--------------------------------------------------------------------------
+        | Component > computed
+        |--------------------------------------------------------------------------
+        */
+	computed: {}, // End of Component > computed
+	/*
+        |--------------------------------------------------------------------------
+        | Component > methods
+        |--------------------------------------------------------------------------
+        */
+	methods: {
+		async getList() {
+
+
+			const response = await marketResource.list();
+			this.items = response.data;
+
+			this.isLoading = false;
+		}
+	}, // End of Component > methods
+	/*
+        |--------------------------------------------------------------------------
+        | Component > mounted
+        |--------------------------------------------------------------------------
+        */
+	mounted() {
+		this.getList();
+	} // End of Component > mounted
+}; // End of export default
+</script>
