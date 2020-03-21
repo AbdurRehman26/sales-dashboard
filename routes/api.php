@@ -22,6 +22,11 @@ Route::post('updateMarkets_final', 'ApiController@updateMarkets2');
 Route::get('getPoints', 'ApiController@getPoints');
 
 
+Route::resource('market', 'Api\V1\MarketController')->except([
+	'edit'
+]);
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
