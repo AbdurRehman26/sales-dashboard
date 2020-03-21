@@ -57,7 +57,7 @@ class ApiController extends Controller
         $credentials = $request->only('email', 'password');
         $user = User::where('email',$request->email)->first();
         try {
-            if (! $token = JWTAuth::attempt($credentials)) {
+            if (! $token = JWTAuth::attempt($credentials, ['exp' => \Carbon\Carbon::now()->addDays(365)->timestamp])) {
                 return response()->json(['message' => 'Login Credentials are not correct.','status'=>$status], 401);
             }
         } catch (JWTException $e) {

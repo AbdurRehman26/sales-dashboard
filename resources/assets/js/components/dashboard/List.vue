@@ -1,18 +1,23 @@
 <template>
 	<div>
 		<div class="row">
-
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-			<a v-if="!showCreate" class="btn btn-success mb-4" @click.prevent="showCreate = true">Create</a>
-			<a v-if="showCreate" class="btn btn-info mb-4" @click.prevent="showCreate = false">Back List</a>
-
+				<a
+					v-if="!showCreate"
+					class="btn btn-success mb-4"
+					@click.prevent="showCreate = true"
+					>Create</a
+				>
+				<a
+					v-if="showCreate"
+					class="btn btn-info mb-4"
+					@click.prevent="showCreate = false"
+					>Back List</a
+				>
 			</div>
-			
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				
-				<create-market v-if="showCreate"></create-market>
 
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<create-market v-if="showCreate"></create-market>
 
 				<div v-if="!showCreate" class="card">
 					<div class="card-header">
@@ -88,14 +93,20 @@
 												>Delete</a
 											>
 										</td>
+										<td>
+											<a
+												class="btn btn-info"
+												href="#"
+												>View</a
+											>
+										</td>
+
 									</tr>
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
 	</div>
@@ -107,8 +118,7 @@ const marketResource = new Resource("api/market");
 
 import { mapGetters } from "vuex";
 
-
-import CreateMarket from "@/components/dashboard/Create"
+import CreateMarket from "@/components/dashboard/Create";
 
 export default {
 	components: {
@@ -120,8 +130,7 @@ export default {
         |--------------------------------------------------------------------------
         */
 	props: {
-		item: {},
-		showCreate: false
+		item: {}
 	}, // End of Component > props
 	/*
         |--------------------------------------------------------------------------
@@ -130,7 +139,8 @@ export default {
         */
 	data() {
 		return {
-			items: []
+			items: [],
+			showCreate: false
 		};
 	}, // End of Component > data
 	/*
@@ -162,6 +172,11 @@ export default {
         */
 	mounted() {
 		this.getList();
-	} // End of Component > mounted
+	}, // End of Component > mounted
+	watch : {
+		showCreate(){
+			this.getList();
+		}
+	}
 }; // End of export default
 </script>

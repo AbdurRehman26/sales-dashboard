@@ -61,7 +61,8 @@ class MarketRepository extends AbstractRepository implements RepositoryContract
         $data = parent::findById($id, $refresh, $details, $encode);
         $data->formatted_created_at = \Carbon\Carbon::parse($data->created_at)->diffForHumans();
         $data->username = app('UserRepository')->findById($data->user_id)->name;
-        $data->market_type_name = app('MarketTypeRepository')->findById($data->market_type)->name;
+
+        $data->market_type_name = $data->market_type ? app('MarketTypeRepository')->findById($data->market_type)->name : '';
 
         return $data;
     }
