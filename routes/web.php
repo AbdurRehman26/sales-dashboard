@@ -29,11 +29,6 @@ Route::get('/', function () {
     }
 });
 
-Route::get('/customer/login', function(){
-        $showSignup = true;
-        return view('auth.login', compact('showSignup'));
-})->name('customer.login');
-
 Auth::routes();
 
 
@@ -103,10 +98,12 @@ Route::get('/clear-cache', function() {
 
 
 Route::get('/{any}', function (){
-
-    $markets = Market::where('user_id', request()->user()->id)->get();
-    $markets = Market::all();
-    return view('layouts.master', compact('markets'));
+    return view('layouts.master');
 })->where('any', '.*');
 
 
+/*
+    $markets = Market::where('user_id', request()->user()->id)->get();
+    $markets = Market::all();
+
+*/

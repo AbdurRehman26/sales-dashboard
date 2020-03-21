@@ -44,7 +44,8 @@ class ApiController extends Controller
 
     public function login(Request $request)
     {
-        
+        $status = 'false';
+                
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255',
             'password'=> 'required'
@@ -57,12 +58,8 @@ class ApiController extends Controller
         $user = User::where('email',$request->email)->first();
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
-                $status = 'false';
                 return response()->json(['message' => 'Login Credentials are not correct.','status'=>$status], 401);
             }
-             if( $user->is_verified =='no'){
-             return response()->json(['message' => 'Login failed You cannot access this account.','status'=>$status], 401);
-        }
         } catch (JWTException $e) {
             return response()->json(['message' => 'Token Expired.'], 500);
         }

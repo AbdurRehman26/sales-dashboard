@@ -4,26 +4,21 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://Abdur_Rehman26@bitbucket.org/Abdur_Rehman26/laravel-abstract-resource.git"
-        }
-    ],
     "require": {
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "intervention/image": "^2.5",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "kazmi/laravel-abstract-resource": "dev-master",
+        "orangehill/iseed": "^2.6",
         "tymon/jwt-auth": "^0.5.12"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~6.0"
+        "phpunit/phpunit": "~6.0",
+        "xethron/migrations-generator": "^2.0"
     },
     "autoload": {
         "classmap": [

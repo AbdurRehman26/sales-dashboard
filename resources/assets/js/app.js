@@ -17,9 +17,10 @@ window.Vue = require("vue");
 import Vue from "vue";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
+import store from './store';
 
 import VueDataTables from 'vue-data-tables'
-Vue.use(VueDataTables)
+Vue.use(VueDataTables);
 
 
 import router from "./routes";
@@ -30,5 +31,6 @@ Vue.use(Vuex);
 const app = new Vue({
 	el: "#app",
 	router: router,
+	store
 });
 
