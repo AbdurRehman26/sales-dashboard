@@ -42,15 +42,15 @@
 										<th>Owner Email</th>
 										<th>Owner Phone</th>
 										<th>Owner Address</th>
-										<th>Status</th>
 										<th>Notes</th>
-										<th>Color</th>
 										<th>other</th>
 										<th>image</th>
 										<th>pdf</th>
 										<th>audio</th>
 										<th>Create Date</th>
 										<th>Update Date</th>
+										<th>Status</th>
+										<th>Action</th>
 										<th></th>
 									</tr>
 								</thead>
@@ -67,9 +67,7 @@
 										<td>
 											{{ item.owner_address }}
 										</td>
-										<td>{{ item.status }}</td>
 										<td>{{ item.notes }}</td>
-										<td>{{ item.color }}</td>
 										<td>{{ item.other }}</td>
 										<td>
 											<a href="/admin/img/123">"img" </a>
@@ -86,21 +84,55 @@
 										</td>
 										<td>{{ item.formatted_created_at }}</td>
 										<td>{{ item.formatted_created_at }}</td>
+
 										<td>
-											<a
-												class="btn btn-danger"
-												href="/admin/delete-market/12312"
-												>Delete</a
+											<select
+												v-model="item.color"
+												class="form-control"
 											>
+												<option value="Yellow/Contacted"
+													>Yellow/Contacted</option
+												>
+												<option
+													value="Blue/Contacted & Sample left"
+													>Blue/Contacted & Sample
+													left</option
+												>
+												<option
+													value="LimeGreen/Successfully Acquired"
+													>LimeGreen/Successfully
+													Acquired</option
+												>
+												<option
+													value="DarkGreen/Successfully Acquired & Sample left"
+													>DarkGreen/Successfully
+													Acquired & Sample
+													left</option
+												>
+											</select>
 										</td>
+
 										<td>
 											<a
-												class="btn btn-info"
+												class="btn btn-success"
 												href="#"
-												>View</a
+												@click.prevent="
+													handleUpdate(item)
+												"
+												>Change</a
 											>
 										</td>
 
+										<td>
+											<router-link
+
+												v-if="!(item.img || item.pdf || item.other || item.audio)"
+												:to="{ name : 'market.view' , params :  { id : item.id }}"
+												class="btn btn-info"
+												tag="a">
+												View
+											</router-link>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -157,7 +189,13 @@ export default {
         |--------------------------------------------------------------------------
         */
 	methods: {
+		async handleUpdate(item) {
+			const response = await marketResource.update(item.id, item);
+			this.getList();
+		},
 		async getList() {
+			this.items = [];
+
 			const response = await marketResource.list();
 
 			this.items = response.data;
@@ -173,8 +211,8 @@ export default {
 	mounted() {
 		this.getList();
 	}, // End of Component > mounted
-	watch : {
-		showCreate(){
+	watch: {
+		showCreate() {
 			this.getList();
 		}
 	}

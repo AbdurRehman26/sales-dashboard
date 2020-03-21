@@ -18,7 +18,7 @@ class RedirectUserIfCustomer
 
         if($request->user() && !$request->user()->user_type){
 
-            return redirect('customer/dashbord');
+            return redirect('customer/market');
 
         }
 

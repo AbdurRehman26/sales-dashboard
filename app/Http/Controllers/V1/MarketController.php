@@ -54,7 +54,7 @@ class MarketController extends ApiResourceController{
     }
 
     public function input($value=''){
-        $input = request()->only('market_name', 'market_owner', 'owner_email', 'owner_phone', 'owner_address', 'contact_person_name', 'contact_person_phone', 'contact_person_email', 'other', 'notes', 'plz', 'market_type');
+        $input = request()->only('id', 'color', 'market_name', 'market_owner', 'owner_email', 'owner_phone', 'owner_address', 'contact_person_name', 'contact_person_phone', 'contact_person_email', 'other', 'notes', 'plz', 'market_type', 'img', 'pdf', 'other', 'audio');
 
         $input['user_id'] = request()->user()->id;
         

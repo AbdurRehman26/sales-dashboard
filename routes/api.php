@@ -30,8 +30,15 @@ Route::resource('market', 'Api\V1\MarketController')->except([
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::resource('user', 'Api\V1\UserController')->except([
              'edit'
-        ]);Route::resource('markettype', 'Api\V1\MarketTypeController')->except([
+]);
+
+Route::resource('markettype', 'Api\V1\MarketTypeController')->except([
              'edit'
-        ]);
+]);
+
+
+Route::post('file/upload', 'Api\V1\FileUploadController@upload')->name("file.upload");
+Route::post('file/remove', 'Api\V1\FileUploadController@remove')->name("file.remove");

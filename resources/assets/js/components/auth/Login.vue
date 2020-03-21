@@ -119,9 +119,10 @@ export default {
 			this.$store
 				.dispatch("user/login", this.userData)
 				.then(() => {		
-					console.log(1231888888888)
-					this.$router.push({ path: "/customer/dashboard" });
+
+					this.$router.push({ path: "/customer/market" });
 					this.loading = false;
+
 				})
 				.catch(() => {
 					console.log(138884884)

@@ -20,13 +20,17 @@ import VueRouter from "vue-router";
 import store from './store';
 
 import VueDataTables from 'vue-data-tables'
-Vue.use(VueDataTables);
+
+import VueSignaturePad from 'vue-signature-pad';
+
 
 
 import router from "./routes";
 
-Vue.use(VueRouter);
 Vue.use(Vuex);
+Vue.use(VueRouter);
+Vue.use(VueDataTables);
+Vue.use(VueSignaturePad);
 
 const app = new Vue({
 	el: "#app",

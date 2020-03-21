@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Main from './components/Main.vue'
 import Login from './components/auth/Login.vue'
 import DashboardMain from '@/components/dashboard/List.vue'
+import MarketSingle from '@/components/dashboard/Single.vue'
 
 const router = new VueRouter({
     mode: 'history',
@@ -15,15 +16,14 @@ const router = new VueRouter({
         }
     },
     {
-        path: '/customer/dashboard',
+        path: '/customer/market/',
         component: Main,
         meta: {
             forAuth: true
         },
         children : [
-
             {
-                path: '/',
+                path: '',
                 name: 'dashboard.main',
                 component: DashboardMain,
                 meta: {
@@ -32,7 +32,17 @@ const router = new VueRouter({
                     bodyClass: 'auth-body',
                 },
             },
-        
+            {
+                path: ':id',
+                name: 'market.view',
+                component: MarketSingle,
+                meta: {
+                    title: 'Home',
+                    noSidebar: true,
+                    bodyClass: 'auth-body',
+                },
+            },
+                
 
 
         ]
