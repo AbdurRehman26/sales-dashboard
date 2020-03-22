@@ -114580,7 +114580,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
         _vm._v(" "),
-        _c("th")
+        _c("th", [_vm._v("View")])
       ])
     ])
   },
@@ -114932,6 +114932,20 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -114983,8 +114997,21 @@ var marketResource = new __WEBPACK_IMPORTED_MODULE_1__api_resource__["a" /* defa
 			    isEmpty = _$refs$signaturePad$s.isEmpty,
 			    data = _$refs$signaturePad$s.data;
 
-			console.log(isEmpty);
-			console.log(data);
+			var formData = new FormData();
+			var self = this;
+
+			formData.append("file", data);
+
+			axios.post("/api/file/upload", formData, {
+				headers: {
+					"Content-Type": "multipart/form-data"
+				}
+			}).then(function (response) {
+				self.imageUploaded(response.data, 'other');
+			}).catch(function (error) {
+				console.log(error, 231232);
+				console.log("FAILURE!!");
+			});
 		},
 		imageUploaded: function imageUploaded(response, type) {
 			this.item.img = null;
@@ -114993,6 +115020,8 @@ var marketResource = new __WEBPACK_IMPORTED_MODULE_1__api_resource__["a" /* defa
 			this.item.other = null;
 
 			this.item[type] = response.name;
+
+			console.log(response, this.item, 1231232, type);
 		},
 
 
@@ -115264,8 +115293,14 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c(
+      "a",
+      { staticClass: "btn btn-info mb-5", attrs: { href: "/customer/market" } },
+      [_vm._v("Back to Listing")]
+    ),
+    _vm._v(" "),
     _c("div", { staticClass: "card" }, [
-      _c("h5", { staticClass: "card-header" }, [_vm._v("Create Message")]),
+      _c("h5", { staticClass: "card-header" }, [_vm._v("View Market")]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c(
@@ -115530,7 +115565,7 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 mb-4"
+                  staticClass: "col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 mb-3"
                 },
                 [
                   _c("upload-file", {
@@ -115547,7 +115582,7 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 mb-4"
+                  staticClass: "col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 mb-3"
                 },
                 [
                   _c("upload-file", {
@@ -115565,7 +115600,25 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 mb-4"
+                  staticClass: "col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 mb-3"
+                },
+                [
+                  _c("upload-file", {
+                    attrs: { title: "Audio" },
+                    on: {
+                      response: function($event) {
+                        return _vm.imageUploaded($event, "audio")
+                      }
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 mb-3"
                 },
                 [
                   _c(
@@ -115581,12 +115634,34 @@ var render = function() {
                     ref: "signaturePad",
                     staticClass: "mb-4",
                     staticStyle: { border: "1px solid" },
-                    attrs: { height: "200px", width: "400px" }
+                    attrs: { height: "200px", width: "300px" }
                   }),
                   _vm._v(" "),
-                  _c("button", { on: { click: _vm.undo } }, [_vm._v("Undo")]),
+                  _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.undo($event)
+                        }
+                      }
+                    },
+                    [_vm._v("Undo")]
+                  ),
                   _vm._v(" "),
-                  _c("button", { on: { click: _vm.save } }, [_vm._v("Save")])
+                  _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.save($event)
+                        }
+                      }
+                    },
+                    [_vm._v("Save")]
+                  )
                 ],
                 1
               )
