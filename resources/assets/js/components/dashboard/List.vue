@@ -358,7 +358,7 @@ export default {
 }; // End of export default
 </script>
 
-<style scoped>
+<style>
 .dataTables_empty {
 	display: none;
 }
