@@ -60,7 +60,7 @@ class MarketRepository extends AbstractRepository implements RepositoryContract
 
         $data = parent::findById($id, $refresh, $details, $encode);
         $data->formatted_created_at = \Carbon\Carbon::parse($data->created_at)->diffForHumans();
-        $data->username = app('UserRepository')->findById($data->user_id)->name;
+        $data->username = $data->user_id ? app('UserRepository')->findById($data->user_id)->name : '';
 
         $data->market_type_name = $data->market_type ? app('MarketTypeRepository')->findById($data->market_type)->name : '';
 
@@ -81,8 +81,20 @@ class MarketRepository extends AbstractRepository implements RepositoryContract
      **/
     public function findByAll($pagination = false, $perPage = 10, array $input = [] ) {
      
+        $this->builder = $this->model;
+
+        if(!empty($input['to_import'])){
+ 
+            $this->builder = $this->builder->whereNull('user_id');
+
+
+        }
+
+
         if(!request()->user()->user_type){
+
             $this->builder = $this->model->where('user_id', request()->user()->id);
+        
         }
 
         return parent::findByAll($pagination, $perPage, $input);

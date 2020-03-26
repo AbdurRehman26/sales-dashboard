@@ -19,7 +19,6 @@ import Vuex from "vuex";
 import VueRouter from "vue-router";
 import store from './store';
 
-import VueDataTables from 'vue-data-tables'
 import VueSignaturePad from 'vue-signature-pad';
 import * as VueGoogleMaps from 'vue2-google-maps'
 
@@ -31,10 +30,9 @@ require('../js/custom/dataTables/dataTables.min.js');
 
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-
 require("../js/custom/dataTables/dataTables.buttons.min.js")
-require("../js/custom/dataTables/buttons.html5.min.js")
 require("../js/custom/dataTables/buttons.print.min.js")
+require("../js/custom/dataTables/buttons.html5.min.js")
 require("../js/custom/jszip/jszip.min.js")
 require("../js/custom/pdf/pdfmake.min.js")
  
@@ -44,7 +42,6 @@ import router from "./routes";
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
-Vue.use(VueDataTables);
 Vue.use(VueSignaturePad);
 
 

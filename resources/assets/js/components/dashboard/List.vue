@@ -213,7 +213,7 @@ export default {
 			marketData: {},
 			items: [],
 			showMap: false,
-			showCreate: true
+			showCreate: false
 		};
 	}, // End of Component > data
 	/*

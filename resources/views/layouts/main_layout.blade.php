@@ -182,6 +182,13 @@
                                 <a class="nav-link {{ Request::segment(2) === 'market' ? 'active' : null }}" href="/admin/market" ><i class="fa fa-fw fa-user-circle"></i>View Markets</a>
                                 
                             </li>
+
+                            </li>
+                               <li class="nav-item">
+                                <a class="nav-link {{ Request::segment(2) === 'import' ? 'active' : null }}" href="/admin/import" ><i class="fa fa-fw fa-file"></i>Import Data</a>
+                                
+                            </li>
+
                      <li class="nav-item">
                                 <a class="nav-link {{ Request::segment(2) === 'fcm' ? 'active' : null }}" href="/admin/fcm" ><i class="fa fa-fw fa-user-circle"></i>Send Messages</a>
                                 

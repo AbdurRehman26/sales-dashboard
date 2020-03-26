@@ -420,4 +420,13 @@ class MarketController extends Controller
          
          return view('admin.create_category');
     }
+
+
+    public function assign(Request $request)
+    {
+        \App\Market::whereNull('user_id')->update(['user_id' => $request->user_id]);
+
+        return redirect('admin/market');
+
+    }
 }

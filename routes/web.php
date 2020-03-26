@@ -51,12 +51,13 @@ Route::get('/admin/users',function(){
 });
 
 
-
-
 });
 
 
+Route::post('/admin/import', 'Api\V1\FileImportController@import');
+Route::post('/market/assign', 'MarketController@assign');
 
+Route::get('/admin/import', 'Api\V1\FileImportController@index');
 
 
 Route::get('/admin/market',function(){
