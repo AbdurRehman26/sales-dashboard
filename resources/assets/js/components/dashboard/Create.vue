@@ -242,7 +242,8 @@
 							class="btn btn-primary"
 							type="submit"
 						>
-							Create
+							<spinner v-if="loading"></spinner>
+							<span v-if="!loading">Create</span>
 						</button>
 					</div>
 				</div>
@@ -271,7 +272,7 @@ export default {
 	props: {
 		marketData: {
 			type: Object,
-			default : {}
+			default: {}
 		}
 	}, // End of Component > props
 	/*
@@ -281,6 +282,7 @@ export default {
         */
 	data() {
 		return {
+			loading: true,
 			item: {
 				market_name: "",
 				market_owner: "",
@@ -333,11 +335,16 @@ export default {
 		},
 
 		async handleCreate() {
+
+			this.loading = true;
+
+
 			const response = await marketResource.store(this.item);
 
-			this.refreshItem()
+			this.loading = false;
+			
+			this.refreshItem();
 
-			this.isLoading = false;
 		}
 	}, // End of Component > methods
 	/*
@@ -346,15 +353,12 @@ export default {
         |--------------------------------------------------------------------------
         */
 	mounted() {
-
-		if(this.marketData){
-			console.log(this.marketData)
-			for(var i in this.marketData){
+		if (this.marketData) {
+			console.log(this.marketData);
+			for (var i in this.marketData) {
 				this.item[i] = this.marketData[i];
-			} 
-
+			}
 		}
-
 	} // End of Component > mounted
 }; // End of export default
 </script>

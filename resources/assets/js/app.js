@@ -27,6 +27,19 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.component('spinner' , require('@/components/common/Spinner.vue'));
 
 
+require('../js/custom/dataTables/dataTables.min.js');
+
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+require("../js/custom/dataTables/dataTables.buttons.min.js")
+require("../js/custom/dataTables/buttons.html5.min.js")
+require("../js/custom/dataTables/buttons.print.min.js")
+require("../js/custom/jszip/jszip.min.js")
+require("../js/custom/pdf/pdfmake.min.js")
+ 
+
+
 import router from "./routes";
 
 Vue.use(Vuex);
