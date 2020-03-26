@@ -1,7 +1,10 @@
 <template>
 	<div>
+
+		<a href="/customer/market" class="btn btn-info mb-5">Back to Listing</a>
+
 		<div class="card">
-			<h5 class="card-header">Create Message</h5>
+			<h5 class="card-header">View Market</h5>
 			<div class="card-body">
 				<form class="needs-validation" enctype="multipart/form-data">
 					<div class="row">
@@ -177,7 +180,7 @@
 
 					<div class="form-row">
 						<div
-							class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 mb-4"
+							class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 mb-3"
 						>
 							<upload-file
 								@response="imageUploaded($event, 'img')"
@@ -185,7 +188,7 @@
 						</div>
 
 						<div
-							class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 mb-4"
+							class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 mb-3"
 						>
 							<upload-file
 								:title="'Pdf'"
@@ -194,20 +197,31 @@
 						</div>
 
 						<div
-							class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 mb-4"
+							class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 mb-3"
 						>
-							<label class="form-label" for="validationCustom05">Signature :</label>
+							<upload-file
+								:title="'Audio'"
+								@response="imageUploaded($event, 'audio')"
+							></upload-file>
+						</div>
+
+						<div
+							class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 mb-3"
+						>
+							<label class="form-label" for="validationCustom05"
+								>Signature :</label
+							>
 
 							<VueSignaturePad
 								class="mb-4"
 								height="200px"
-								width="400px"
+								width="300px"
 								style="border: 1px solid;"
 								ref="signaturePad"
 							/>
 
-							<button @click="undo">Undo</button>
-							<button @click="save">Save</button>
+							<button @click.prevent="undo">Undo</button>
+							<button @click.prevent="save">Save</button>
 						</div>
 					</div>
 
@@ -287,8 +301,25 @@ export default {
 		},
 		save() {
 			const { isEmpty, data } = this.$refs.signaturePad.saveSignature();
-			console.log(isEmpty);
-			console.log(data);
+
+			let formData = new FormData();
+			let self = this;
+
+			formData.append("file", data);
+
+			axios
+				.post("/api/file/upload", formData, {
+					headers: {
+						"Content-Type": "multipart/form-data"
+					}
+				})
+				.then(function(response) {
+					self.imageUploaded(response.data, 'other');
+				})
+				.catch(function(error) {
+					console.log(error, 231232)
+					console.log("FAILURE!!");
+				});
 		},
 		imageUploaded(response, type) {
 			this.item.img = null;
@@ -297,6 +328,8 @@ export default {
 			this.item.other = null;
 
 			this.item[type] = response.name;
+		
+			console.log(response, this.item , 1231232, type)
 		},
 
 		removeImage: function(e) {},

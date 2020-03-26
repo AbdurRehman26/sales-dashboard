@@ -268,7 +268,12 @@ export default {
         | Component > props
         |--------------------------------------------------------------------------
         */
-	props: {}, // End of Component > props
+	props: {
+		marketData: {
+			type: Object,
+			default : {}
+		}
+	}, // End of Component > props
 	/*
         |--------------------------------------------------------------------------
         | Component > data
@@ -288,7 +293,9 @@ export default {
 				other: "",
 				notes: "",
 				plz: "",
-				market_type: 1
+				market_type: 1,
+				lat: null,
+				lng: null
 			}
 		};
 	}, // End of Component > data
@@ -319,7 +326,9 @@ export default {
 				other: "",
 				notes: "",
 				plz: "",
-				market_type: 1
+				market_type: 1,
+				lat: null,
+				lng: null
 			};
 		},
 
@@ -336,6 +345,16 @@ export default {
         | Component > mounted
         |--------------------------------------------------------------------------
         */
-	mounted() {} // End of Component > mounted
+	mounted() {
+
+		if(this.marketData){
+			console.log(this.marketData)
+			for(var i in this.marketData){
+				this.item[i] = this.marketData[i];
+			} 
+
+		}
+
+	} // End of Component > mounted
 }; // End of export default
 </script>

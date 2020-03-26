@@ -1,25 +1,43 @@
 <template>
 	<div>
+		<spinner></spinner>
+
 		<div class="row">
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<a
-					v-if="!showCreate"
+					v-if="!showCreate && !showMap"
 					class="btn btn-success mb-4"
 					@click.prevent="showCreate = true"
 					>Create</a
 				>
 				<a
-					v-if="showCreate"
+					v-if="showCreate || showMap"
 					class="btn btn-info mb-4"
-					@click.prevent="showCreate = false"
+					@click.prevent="
+						showCreate = false;
+						showMap = false;
+					"
 					>Back List</a
+				>
+
+				<a
+					v-if="!showMap"
+					class="pull-right btn btn-success mb-4"
+					@click.prevent="
+						showMap = true;
+						showCreate = false;
+					"
+					>View Map</a
 				>
 			</div>
 
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<create-market v-if="showCreate"></create-market>
+				<create-market
+					:marketData="marketData"
+					v-if="showCreate"
+				></create-market>
 
-				<div v-if="!showCreate" class="card">
+				<div v-if="!showCreate && !showMap" class="card">
 					<div class="card-header">
 						<h4 class="mb-0">
 							All Markets
@@ -51,7 +69,7 @@
 										<th>Update Date</th>
 										<th>Status</th>
 										<th>Action</th>
-										<th></th>
+										<th>View</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -125,11 +143,21 @@
 
 										<td>
 											<router-link
-
-												v-if="!(item.img || item.pdf || item.other || item.audio)"
-												:to="{ name : 'market.view' , params :  { id : item.id }}"
+												v-if="
+													!(
+														item.img ||
+														item.pdf ||
+														item.other ||
+														item.audio
+													)
+												"
+												:to="{
+													name: 'market.view',
+													params: { id: item.id }
+												}"
 												class="btn btn-info"
-												tag="a">
+												tag="a"
+											>
 												View
 											</router-link>
 										</td>
@@ -139,6 +167,11 @@
 						</div>
 					</div>
 				</div>
+
+				<market-map
+					@show-market="setMarketData"
+					v-if="showMap"
+				></market-map>
 			</div>
 		</div>
 	</div>
@@ -151,10 +184,12 @@ const marketResource = new Resource("api/market");
 import { mapGetters } from "vuex";
 
 import CreateMarket from "@/components/dashboard/Create";
+import MarketMap from "@/components/dashboard/MarketMap";
 
 export default {
 	components: {
-		CreateMarket
+		CreateMarket,
+		MarketMap
 	},
 	/*
         |--------------------------------------------------------------------------
@@ -171,8 +206,10 @@ export default {
         */
 	data() {
 		return {
+			marketData: {},
 			items: [],
-			showCreate: false
+			showMap: false,
+			showCreate: true
 		};
 	}, // End of Component > data
 	/*
@@ -189,6 +226,11 @@ export default {
         |--------------------------------------------------------------------------
         */
 	methods: {
+		setMarketData(data) {
+			this.marketData = data;
+			this.showCreate = true;
+			this.showMap = false;
+		},
 		async handleUpdate(item) {
 			const response = await marketResource.update(item.id, item);
 			this.getList();

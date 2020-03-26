@@ -2,10 +2,10 @@
 
 return [
     'default' => [
-        'folder_name' => 'product',
-        'public_relative' => 'app/product/',
-        'path' => 'files/product',
-        'full_path' => storage_path('app/product'),
+        'folder_name' => 'files',
+        'public_relative' => 'app/files/',
+        'path' => 'files/',
+        'full_path' => storage_path('app/files'),
     ],
 
     'settings' => [
