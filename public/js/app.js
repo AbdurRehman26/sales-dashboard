@@ -105565,6 +105565,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
 
 
 var marketResource = new __WEBPACK_IMPORTED_MODULE_1__api_resource__["a" /* default */]("api/market");
@@ -105626,15 +105629,17 @@ var marketResource = new __WEBPACK_IMPORTED_MODULE_1__api_resource__["a" /* defa
 					while (1) {
 						switch (_context.prev = _context.next) {
 							case 0:
-								_context.next = 2;
+								this.loading = true;
+								_context.next = 3;
 								return marketResource.update(item.id, item);
 
-							case 2:
+							case 3:
 								response = _context.sent;
 
+								this.loading = false;
 								this.getList();
 
-							case 4:
+							case 6:
 							case "end":
 								return _context.stop();
 						}
@@ -105668,10 +105673,9 @@ var marketResource = new __WEBPACK_IMPORTED_MODULE_1__api_resource__["a" /* defa
 
 								this.items = response.data;
 
-								this.initiateDataTable();
 								this.isLoading = false;
 
-							case 9:
+							case 8:
 							case "end":
 								return _context2.stop();
 						}
@@ -105772,6 +105776,12 @@ var marketResource = new __WEBPACK_IMPORTED_MODULE_1__api_resource__["a" /* defa
         */
 	mounted: function mounted() {
 		this.getList();
+
+		var self = this;
+
+		setTimeout(function () {
+			self.initiateDataTable();
+		}, 2000);
 	},
 	// End of Component > mounted
 	watch: {
@@ -107123,307 +107133,294 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      { staticClass: "row" },
-      [
-        _c(
-          "div",
-          { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" },
-          [
-            !_vm.showCreate && !_vm.showMap
-              ? _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-success mb-4",
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.showCreate = true
-                      }
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" },
+        [
+          !_vm.showCreate && !_vm.showMap
+            ? _c(
+                "a",
+                {
+                  staticClass: "btn btn-success mb-4",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.showCreate = true
                     }
-                  },
-                  [_vm._v("Create")]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.showCreate || _vm.showMap
-              ? _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-info mb-4",
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.showCreate = false
-                        _vm.showMap = false
-                      }
+                  }
+                },
+                [_vm._v("Create")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.showCreate || _vm.showMap
+            ? _c(
+                "a",
+                {
+                  staticClass: "btn btn-info mb-4",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.showCreate = false
+                      _vm.showMap = false
                     }
-                  },
-                  [_vm._v("Back List")]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            !_vm.showMap
-              ? _c(
-                  "a",
-                  {
-                    staticClass: "pull-right btn btn-success mb-4",
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.showMap = true
-                        _vm.showCreate = false
-                      }
+                  }
+                },
+                [_vm._v("Back List")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          !_vm.showMap
+            ? _c(
+                "a",
+                {
+                  staticClass: "pull-right btn btn-success mb-4",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.showMap = true
+                      _vm.showCreate = false
                     }
-                  },
-                  [_vm._v("View Map")]
-                )
-              : _vm._e()
-          ]
-        ),
-        _vm._v(" "),
-        _vm.loading ? _c("spinner") : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" },
-          [
-            _vm.showCreate
-              ? _c("create-market", { attrs: { marketData: _vm.marketData } })
-              : _vm._e(),
-            _vm._v(" "),
-            !_vm.showCreate && !_vm.showMap
-              ? _c("div", { staticClass: "card" }, [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("div", { staticClass: "table-responsive" }, [
-                      _c(
-                        "table",
-                        {
-                          staticClass:
-                            "table table-striped table-bordered second",
-                          staticStyle: { width: "100%" },
-                          attrs: { id: "example" }
-                        },
-                        [
-                          _vm._m(1),
-                          _vm._v(" "),
-                          _c(
-                            "tbody",
-                            _vm._l(_vm.items, function(item) {
-                              return _c("tr", [
-                                _c("td", [_vm._v(_vm._s(item.market_name))]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(item.market_type_name))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(item.market_owner))]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(
-                                    "\n\t\t\t\t\t\t\t\t\t\t" +
-                                      _vm._s(item.market_owner) +
-                                      "\n\t\t\t\t\t\t\t\t\t"
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(item.owner_email))]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(item.owner_phone))]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(
-                                    "\n\t\t\t\t\t\t\t\t\t\t" +
-                                      _vm._s(item.owner_address) +
-                                      "\n\t\t\t\t\t\t\t\t\t"
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(item.notes))]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(item.other))]),
-                                _vm._v(" "),
-                                _vm._m(2, true),
-                                _vm._v(" "),
-                                _vm._m(3, true),
-                                _vm._v(" "),
-                                _vm._m(4, true),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(item.formatted_created_at))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(item.formatted_created_at))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c(
-                                    "select",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: item.color,
-                                          expression: "item.color"
-                                        }
-                                      ],
-                                      staticClass: "form-control",
-                                      on: {
-                                        change: function($event) {
-                                          var $$selectedVal = Array.prototype.filter
-                                            .call(
-                                              $event.target.options,
-                                              function(o) {
-                                                return o.selected
-                                              }
-                                            )
-                                            .map(function(o) {
-                                              var val =
-                                                "_value" in o
-                                                  ? o._value
-                                                  : o.value
-                                              return val
-                                            })
-                                          _vm.$set(
-                                            item,
-                                            "color",
-                                            $event.target.multiple
-                                              ? $$selectedVal
-                                              : $$selectedVal[0]
-                                          )
-                                        }
+                  }
+                },
+                [_vm._v("View Map")]
+              )
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" },
+        [
+          _vm.showCreate
+            ? _c("create-market", { attrs: { marketData: _vm.marketData } })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("center", [_vm.loading ? _c("spinner") : _vm._e()], 1),
+          _vm._v(" "),
+          !_vm.showCreate && !_vm.showMap
+            ? _c("div", { staticClass: "card" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c(
+                      "table",
+                      {
+                        staticClass:
+                          "table table-striped table-bordered second",
+                        staticStyle: { "margin-top": "30px", width: "100%" },
+                        attrs: { id: "example" }
+                      },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.items, function(item) {
+                            return _c("tr", [
+                              _c("td", [_vm._v(_vm._s(item.market_name))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.market_type_name))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.market_owner))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t\t\t" +
+                                    _vm._s(item.market_owner) +
+                                    "\n\t\t\t\t\t\t\t\t\t"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.owner_email))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.owner_phone))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t\t\t" +
+                                    _vm._s(item.owner_address) +
+                                    "\n\t\t\t\t\t\t\t\t\t"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.notes))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(item.other))]),
+                              _vm._v(" "),
+                              _vm._m(2, true),
+                              _vm._v(" "),
+                              _vm._m(3, true),
+                              _vm._v(" "),
+                              _vm._m(4, true),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(item.formatted_created_at))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(item.formatted_created_at))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: item.color,
+                                        expression: "item.color"
                                       }
-                                    },
-                                    [
-                                      _c(
-                                        "option",
+                                    ],
+                                    staticClass: "form-control",
+                                    on: {
+                                      change: function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          item,
+                                          "color",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { value: "Yellow/Contacted" } },
+                                      [_vm._v("Yellow/Contacted")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "option",
+                                      {
+                                        attrs: {
+                                          value: "Blue/Contacted & Sample left"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "Blue/Contacted & Sample\n\t\t\t\t\t\t\t\t\t\t\t\tleft"
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "option",
+                                      {
+                                        attrs: {
+                                          value:
+                                            "LimeGreen/Successfully Acquired"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "LimeGreen/Successfully\n\t\t\t\t\t\t\t\t\t\t\t\tAcquired"
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "option",
+                                      {
+                                        attrs: {
+                                          value:
+                                            "DarkGreen/Successfully Acquired & Sample left"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "DarkGreen/Successfully\n\t\t\t\t\t\t\t\t\t\t\t\tAcquired & Sample\n\t\t\t\t\t\t\t\t\t\t\t\tleft"
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn btn-success",
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.handleUpdate(item)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Change")]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                [
+                                  !(
+                                    item.img ||
+                                    item.pdf ||
+                                    item.other ||
+                                    item.audio
+                                  )
+                                    ? _c(
+                                        "router-link",
                                         {
-                                          attrs: { value: "Yellow/Contacted" }
-                                        },
-                                        [_vm._v("Yellow/Contacted")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "option",
-                                        {
+                                          staticClass: "btn btn-info",
                                           attrs: {
-                                            value:
-                                              "Blue/Contacted & Sample left"
+                                            to: {
+                                              name: "market.view",
+                                              params: { id: item.id }
+                                            },
+                                            tag: "a"
                                           }
                                         },
                                         [
                                           _vm._v(
-                                            "Blue/Contacted & Sample\n\t\t\t\t\t\t\t\t\t\t\t\tleft"
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "option",
-                                        {
-                                          attrs: {
-                                            value:
-                                              "LimeGreen/Successfully Acquired"
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "LimeGreen/Successfully\n\t\t\t\t\t\t\t\t\t\t\t\tAcquired"
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "option",
-                                        {
-                                          attrs: {
-                                            value:
-                                              "DarkGreen/Successfully Acquired & Sample left"
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "DarkGreen/Successfully\n\t\t\t\t\t\t\t\t\t\t\t\tAcquired & Sample\n\t\t\t\t\t\t\t\t\t\t\t\tleft"
+                                            "\n\t\t\t\t\t\t\t\t\t\t\tView\n\t\t\t\t\t\t\t\t\t\t"
                                           )
                                         ]
                                       )
-                                    ]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-success",
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          return _vm.handleUpdate(item)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("Change")]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "td",
-                                  [
-                                    !(
-                                      item.img ||
-                                      item.pdf ||
-                                      item.other ||
-                                      item.audio
-                                    )
-                                      ? _c(
-                                          "router-link",
-                                          {
-                                            staticClass: "btn btn-info",
-                                            attrs: {
-                                              to: {
-                                                name: "market.view",
-                                                params: { id: item.id }
-                                              },
-                                              tag: "a"
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n\t\t\t\t\t\t\t\t\t\t\tView\n\t\t\t\t\t\t\t\t\t\t"
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
-                                  ],
-                                  1
-                                )
-                              ])
-                            }),
-                            0
-                          )
-                        ]
-                      )
-                    ])
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ])
+                          }),
+                          0
+                        )
+                      ]
+                    )
                   ])
                 ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.showMap
-              ? _c("market-map", { on: { "show-market": _vm.setMarketData } })
-              : _vm._e()
-          ],
-          1
-        )
-      ],
-      1
-    )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.showMap
+            ? _c("market-map", { on: { "show-market": _vm.setMarketData } })
+            : _vm._e()
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = [

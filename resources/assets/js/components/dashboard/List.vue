@@ -29,13 +29,15 @@
 				>
 			</div>
 
-			<spinner v-if="loading"></spinner>
-
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<create-market
 					:marketData="marketData"
 					v-if="showCreate"
 				></create-market>
+
+				<center>
+					<spinner v-if="loading"></spinner>
+				</center>
 
 				<div v-if="!showCreate && !showMap" class="card">
 					<div class="card-header">
@@ -47,11 +49,12 @@
 					<div class="card-body">
 						<div class="table-responsive">
 							<table
+
 								id="example"
 								class="table table-striped table-bordered second"
-								style="width:100%"
+								style="margin-top:30px;width:100%"
 							>
-								<thead>
+								<thead >
 									<tr>
 										<th>Market Name</th>
 										<th>Market ype</th>
@@ -233,7 +236,9 @@ export default {
 			this.showMap = false;
 		},
 		async handleUpdate(item) {
+			this.loading = true;
 			const response = await marketResource.update(item.id, item);
+			this.loading = false;
 			this.getList();
 		},
 		async getList() {
@@ -245,7 +250,6 @@ export default {
 
 			this.items = response.data;
 
-			this.initiateDataTable();
 			this.isLoading = false;
 		},
 
@@ -349,6 +353,12 @@ export default {
         */
 	mounted() {
 		this.getList();
+
+		let self = this;
+
+		setTimeout(function() {
+			self.initiateDataTable();
+		}, 2000);
 	}, // End of Component > mounted
 	watch: {
 		showCreate() {
