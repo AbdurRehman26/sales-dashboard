@@ -1,7 +1,5 @@
 <template>
 	<div>
-		<spinner></spinner>
-
 		<div class="row">
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<a
@@ -30,6 +28,8 @@
 					>View Map</a
 				>
 			</div>
+
+			<spinner v-if="loading"></spinner>
 
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<create-market
@@ -206,10 +206,11 @@ export default {
         */
 	data() {
 		return {
+			loading: true,
 			marketData: {},
 			items: [],
 			showMap: false,
-			showCreate: true
+			showCreate: false
 		};
 	}, // End of Component > data
 	/*
@@ -238,11 +239,107 @@ export default {
 		async getList() {
 			this.items = [];
 
+			this.loading = true;
 			const response = await marketResource.list();
+			this.loading = false;
 
 			this.items = response.data;
 
+			this.initiateDataTable();
 			this.isLoading = false;
+		},
+
+		initiateDataTable() {
+			$("#example").DataTable({
+				dom: '<"top"lBf>rt<"bottom"ip><"clear">',
+
+				buttons: [
+					{
+						extend: "copyHtml5",
+						className: "green",
+						text: '<b class="fa fa-files-o">Copy</b>',
+						titleAttr: "Copy"
+					},
+					{
+						extend: "excelHtml5",
+						className: "green",
+						text: '<b class="fa fa-file-excel-o">Excel</b>',
+						titleAttr: "Excel"
+					},
+					{
+						extend: "csvHtml5",
+						className: "green",
+						text: '<b class="fa fa-file-text-o">CSV</b>',
+						titleAttr: "CSV"
+					},
+					{
+						extend: "pdfHtml5",
+						className: "green",
+						orientation: "landscape",
+						exportOptions: {
+							columns: ":visible"
+						},
+						pageSize: "LEGAL",
+						text: '<i class="fa fa-file-pdf-o"> PDF</i>',
+						titleAttr: "PDF",
+						customize: function(doc) {
+							doc.pageMargins = [10, 10, 10, 10];
+							doc.defaultStyle.fontSize = 7;
+							doc.styles.tableHeader.fontSize = 7;
+							doc.styles.title.fontSize = 9;
+							// Remove spaces around page title
+							doc.content[0].text = doc.content[0].text.trim();
+							// Create a footer
+							doc["footer"] = function(page, pages) {
+								return {
+									columns: [
+										"This is your left footer column",
+										{
+											// This is the right column
+											alignment: "right",
+											text: [
+												"page ",
+												{ text: page.toString() },
+												" of ",
+												{ text: pages.toString() }
+											]
+										}
+									],
+									margin: [10, 0]
+								};
+							};
+							// Styling the table: create style object
+							var objLayout = {};
+							// Horizontal line thickness
+							objLayout["hLineWidth"] = function(i) {
+								return 0.5;
+							};
+							// Vertikal line thickness
+							objLayout["vLineWidth"] = function(i) {
+								return 0.5;
+							};
+							// Horizontal line color
+							objLayout["hLineColor"] = function(i) {
+								return "#aaa";
+							};
+							// Vertical line color
+							objLayout["vLineColor"] = function(i) {
+								return "#aaa";
+							};
+							// Left padding of the cell
+							objLayout["paddingLeft"] = function(i) {
+								return 4;
+							};
+							// Right padding of the cell
+							objLayout["paddingRight"] = function(i) {
+								return 4;
+							};
+							// Inject the object in the document
+							doc.content[1].layout = objLayout;
+						}
+					}
+				]
+			});
 		}
 	}, // End of Component > methods
 	/*
@@ -260,3 +357,9 @@ export default {
 	}
 }; // End of export default
 </script>
+
+<style scoped>
+.dataTables_empty {
+	display: none;
+}
+</style>

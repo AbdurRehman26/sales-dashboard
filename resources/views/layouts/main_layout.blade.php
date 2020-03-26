@@ -228,7 +228,7 @@
     <!-- Optional JavaScript -->
     <!----- jquery 3.3.1  --->
      <!--<script src="/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>-->
-    <script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
      <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
  
