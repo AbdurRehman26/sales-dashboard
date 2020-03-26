@@ -282,7 +282,7 @@ export default {
         */
 	data() {
 		return {
-			loading: true,
+			loading: false,
 			item: {
 				market_name: "",
 				market_owner: "",
