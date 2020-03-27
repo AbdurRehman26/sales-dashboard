@@ -40,6 +40,7 @@ class CreateMarketsTable extends Migration {
 			$table->float('item_amount', 10, 0)->nullable();
 			$table->string('plz', 222)->default('');
 			$table->boolean('display')->nullable();
+			$table->softDeletes();
 		});
 	}
 
