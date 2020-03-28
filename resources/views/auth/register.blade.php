@@ -119,7 +119,7 @@
                 {{-- <div class="card-footer-item card-footer-item-bordered">
                     <a href="#" class="footer-link">Create An Account</a></div> --}}
                 <div class="card-footer-item card-footer-item-bordered">
-                    <a href="{{ route('customer.login') }}" class="footer-link">Login</a>
+                    <a href="/customer/login" class="footer-link">Login</a>
                 </div>
 
             </div>

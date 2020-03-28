@@ -57,9 +57,9 @@
 									>
 									<a
 										class="dropdown-item"
-										href=""
-										onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"
+										href="/customer/login"
+										tag="a"
+										onclick="event.preventDefault(); localStorage.setItem('user', null); localStorage.setItem('token', null)"
 									>
 										<i class="fas fa-power-off mr-2"></i>
 										Logout
@@ -122,18 +122,12 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"
+										href="#"
+										@click.prevent="logOut"
 									>
 										<i class="fas fa-power-off"></i> Logout
 									</a>
 
-									<form
-										id="logout-form"
-										method="POST"
-										style="display: none;"
-									>
-									</form>
 								</li>
 							</ul>
 						</div>
@@ -153,3 +147,16 @@
 		</div>
 	</div>
 </template>
+
+<script>
+	export default{
+
+		methods : {
+			logOut(){
+
+				this.$router.push('/customer/login')
+			}
+		}
+
+	}
+</script>

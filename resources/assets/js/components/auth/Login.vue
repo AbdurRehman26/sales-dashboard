@@ -66,7 +66,13 @@
 				</div>
 				<div class="card-footer bg-white p-0  ">
 					<div class="card-footer-item card-footer-item-bordered">
-						<a href="" class="footer-link">Signup</a>
+						
+						<router-link  tag="a" :to="{ path : '/customer/signup'}">
+							
+							Signup
+
+						</router-link>	
+
 					</div>
 				</div>
 			</div>

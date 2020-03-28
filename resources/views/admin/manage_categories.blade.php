@@ -242,7 +242,7 @@ $(document).ready(function() {
 				{
 					extend: 'copyHtml5',
 					className: 'green',
-					text: initiateDataTable'<b class="fa fa-files-o">Copy</b>',
+					text: '<b class="fa fa-files-o">Copy</b>',
 					titleAttr: 'Copy'
 				},
 				{
