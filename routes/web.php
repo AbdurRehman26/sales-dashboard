@@ -32,6 +32,11 @@ Route::get('/', function () {
 Auth::routes();
 
 
+Route::get('/customer/signup', function(){
+        return view('auth.register');
+});
+
+
 Route::group([
     'middleware' => [
         'user.customer',

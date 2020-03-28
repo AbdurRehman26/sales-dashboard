@@ -2,6 +2,7 @@ import VueRouter from 'vue-router';
 
 import Main from './components/Main.vue'
 import Login from './components/auth/Login.vue'
+import Signup from './components/auth/Signup.vue'
 import DashboardMain from '@/components/dashboard/List.vue'
 import MarketSingle from '@/components/dashboard/Single.vue'
 
@@ -11,6 +12,13 @@ const router = new VueRouter({
     {
         path: '/customer/login',
         component: Login,
+        meta: {
+            forAuth: true
+        }
+    },
+    {
+        path: '/customer/signup',
+        component: Signup,
         meta: {
             forAuth: true
         }

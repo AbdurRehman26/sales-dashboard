@@ -1,4 +1,4 @@
-import { login, logout, getInfo } from '@/api/auth';
+import { login, logout, getInfo, signUp } from '@/api/auth';
 import { getToken, setToken, removeToken } from '@/utils/auth';
 import store from '@/store';
 
@@ -57,6 +57,24 @@ const actions = {
         });
     });
   },
+
+  // user login
+  register({ commit }, userInfo) {
+    const { email, password } = userInfo;
+    return new Promise((resolve, reject) => {
+      login({ email: email.trim(), password: password })
+        .then(response => {
+          commit('SET_TOKEN', response.token);
+          setToken(response.token);
+          resolve();
+        })
+        .catch(error => {
+          console.log(error, 1312321)
+          reject(error);
+        });
+    });
+  },
+
 
   // get user info
   getInfo({ commit, state }) {

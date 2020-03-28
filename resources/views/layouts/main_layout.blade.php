@@ -251,9 +251,7 @@
  
  <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
     <!----- bootstap bundle js--->
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!----- slimscroll js--->
-    <script src="/vendor/slimscroll/jquery.slimscroll.js"></script>
    
     
     <!----- main js--->
@@ -262,7 +260,7 @@
 
   
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
- <script src="{{URL::asset('js/spartan-multi-image-picker-min.js')}}"></script>  
+    <!-- <script src="{{URL::asset('js/spartan-multi-image-picker-min.js')}}"></script>   -->
 
 
  <!--<script src="/vendor/datatables/js/buttons.bootstrap4.min.js"></script>-->
