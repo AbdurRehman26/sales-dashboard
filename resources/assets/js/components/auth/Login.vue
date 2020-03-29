@@ -67,11 +67,11 @@
 				<div class="card-footer bg-white p-0  ">
 					<div class="card-footer-item card-footer-item-bordered">
 						
-						<router-link  tag="a" :to="{ path : '/customer/signup'}">
+						<a  :href="'/customer/signup'">
 							
 							Signup
 
-						</router-link>	
+						</a>	
 
 					</div>
 				</div>
