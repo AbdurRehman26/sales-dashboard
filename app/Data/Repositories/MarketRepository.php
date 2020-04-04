@@ -81,7 +81,7 @@ class MarketRepository extends AbstractRepository implements RepositoryContract
      **/
     public function findByAll($pagination = false, $perPage = 10, array $input = [] ) {
      
-        $this->builder = $this->model;
+        $this->builder = $this->model->withTrashed();
 
         if(!empty($input['to_import'])){
  

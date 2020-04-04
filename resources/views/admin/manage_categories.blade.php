@@ -147,7 +147,19 @@ input:checked + .slider:before {
                                                 <td><a href="/admin/viewaudio/{{$category->id}}">{{ $category->audio }} </a> </td>
                                                 <td>{{ date('F jS, Y h:i:s', strtotime($category->created_at)) }}</td>
                                                   <td>{{ date('F jS, Y h:i:s', strtotime($category->updated_at)) }}</td>
-													 	<td><a class="btn btn-danger" href="/admin/delete-market/{{ $category->id }}">Delete</a></td>  
+													 	                     <td>
+
+                                                  @if(!$category->deleted_at)
+                                                  
+                                                  <a data-id="{{$category->id}}" class="delete-btn btn btn-danger"> Delete</a>
+                                                  
+                                                  @else
+
+                                                    Deleted on {{ date('F jS, Y h:i:s', strtotime($category->deleted_at)) }}
+
+                                                  @endif
+
+                                                </td>  
                                                 </tr>
                                                 @endforeach
                                                 
@@ -179,7 +191,7 @@ input:checked + .slider:before {
 @section('javascript')
 <script>
     
-    var switchStatus = false;
+  var switchStatus = false;
   function status(id,status){
 
     if ( status==0 ) {
@@ -234,6 +246,49 @@ input:checked + .slider:before {
 }
 
 $(document).ready(function() {
+
+
+  $('.delete-btn').click(function(){
+
+    var id = $(this).data('id');
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+
+      console.log(result);
+
+
+      $.ajax({
+        
+
+            url: '/admin/delete-market/' + id,
+            type: 'GET',
+                                                
+            success: function (response) {
+
+            //console.log(response);
+            setTimeout(function(){
+
+            location.reload('/')
+
+            }, 500);
+
+                
+            }
+        });
+    
+
+      });
+
+  });
+
    $('#example').DataTable( {
         	dom: '<"top"lBf>rt<"bottom"ip><"clear">',
 			

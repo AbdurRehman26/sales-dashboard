@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Data\Models\Market;
+use Carbon\Carbon;
 
 class DeleteMarket extends Command
 {
@@ -37,6 +39,12 @@ class DeleteMarket extends Command
      */
     public function handle()
     {
-        //
+
+
+
+        Market::onlyTrashed()->whereDate('deleted_at', '>=', Carbon::today()->addDays(3)->toDateString())->forceDelete();
+
+        dd(1);
+
     }
 }

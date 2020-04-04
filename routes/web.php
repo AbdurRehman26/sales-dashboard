@@ -66,7 +66,9 @@ Route::get('/admin/import', 'Api\V1\FileImportController@index');
 
 
 Route::get('/admin/market',function(){
-        $categories = Market::all();
+
+        $categories = Market::withTrashed()->get();
+
         foreach( $categories as $key =>$value){
              $type= MarketTypes::where('id', $value->market_type)->first();  
              if(!empty($type)){
