@@ -42,3 +42,6 @@ Route::resource('markettype', 'Api\V1\MarketTypeController')->except([
 
 Route::post('file/upload', 'Api\V1\FileUploadController@upload')->name("file.upload");
 Route::post('file/remove', 'Api\V1\FileUploadController@remove')->name("file.remove");
+Route::resource('journal', 'Api\V1\JournalController')->except([
+             'edit'
+        ]);
