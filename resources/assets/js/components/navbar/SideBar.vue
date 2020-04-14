@@ -69,8 +69,7 @@
 										id="logout-form"
 										method="POST"
 										style="display: none;"
-									>
-									</form>
+									></form>
 								</div>
 							</li>
 						</ul>
@@ -104,12 +103,13 @@
 									Menu
 								</li>
 
-								<!--                             </li>
-                               <li class="nav-item">
-                                <a class="nav-link {{ Request::segment(2) === 'market' ? 'active' : null }}" href="/admin/market" ><i class="fa fa-fw fa-user-circle"></i>View Markets</a>
-                                
-                            </li>
- -->
+								<li class="nav-item">
+									<a class="nav-link" href="/customer/market"
+										><i class="fa fa-fw fa-user-circle"></i
+										>View Markets</a
+									>
+								</li>
+
 								<li class="nav-divider">
 									Settings
 								</li>
@@ -127,7 +127,6 @@
 									>
 										<i class="fas fa-power-off"></i> Logout
 									</a>
-
 								</li>
 							</ul>
 						</div>
@@ -149,14 +148,11 @@
 </template>
 
 <script>
-	export default{
-
-		methods : {
-			logOut(){
-
-				this.$router.push('/customer/login')
-			}
-		}
-
-	}
+export default {
+	methods: {
+		logOut() {
+			this.$router.push("/customer/login");
+		},
+	},
+};
 </script>

@@ -17,8 +17,8 @@ class CreateJournalTable extends Migration
             $table->increments('id');
             $table->integer('market_id');
             $table->integer('user_id');
-            $table->varchar('contacted_with');
-            $table->varchar('contacted_via');
+            $table->string('contacted_with');
+            $table->string('contacted_via');
             $table->text('notes');
             $table->datetime('contacted_at');
             $table->timestamps();

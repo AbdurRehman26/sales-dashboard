@@ -40,4 +40,32 @@ class JournalRepository extends AbstractRepository implements RepositoryContract
         $this->builder = $model;
 
     }
+
+
+   /**
+     *
+     * This method will fetch all exsiting models
+     * and will return output back to client as json
+     *
+     * @access public
+     * @return mixed
+     *
+     * @author Usaama Effendi <usaamaeffendi@gmail.com>
+     *
+     **/
+    public function findByAll($pagination = false, $perPage = 10, array $input = [] ) {
+     
+        $this->builder = $this->model->orderBy('id', 'desc');
+
+        if(!empty($input['market_id'])){
+ 
+            $this->builder = $this->builder->where('market_id', '=', $input['market_id']);
+
+
+        }
+
+        return parent::findByAll($pagination, $perPage, $input);
+
+    }
+
 }

@@ -174,6 +174,7 @@ return [
         App\Providers\MarketRepositoryServiceProvider::class,
         App\Providers\MarketTypeRepositoryServiceProvider::class,
         App\Providers\UserRepositoryServiceProvider::class,
+        App\Providers\JournalRepositoryServiceProvider::class,
 
         /*
          * Application Service Providers...

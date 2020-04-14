@@ -73,6 +73,7 @@
 										<th>Status</th>
 										<th>Action</th>
 										<th>View</th>
+										<th>Journal</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -164,6 +165,22 @@
 												View
 											</router-link>
 										</td>
+
+
+										<td>
+											<router-link
+												:to="{
+													name: 'journal.view',
+													params: { id: item.id }
+												}"
+												class="btn btn-info"
+												tag="a"
+											>
+												View Journal
+											</router-link>
+										</td>
+
+
 									</tr>
 								</tbody>
 							</table>
