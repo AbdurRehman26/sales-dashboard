@@ -14,8 +14,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
-    <link  type="text/css" href="{{ asset('/css/styles.css') }}" />
-    <link  type="text/css" href="{{ asset('/fonts/circular-std/style.css') }}" />
+    <link  type="text/css" href="{{ asset('/css/styles.css') }}">
+    <link  type="text/css" href="{{ asset('/fonts/circular-std/style.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <style>
