@@ -54,7 +54,7 @@ class JournalController extends ApiResourceController{
     }
 
     public function input($value=''){
-        $input = request()->only('id', 'market_id');
+        $input = request()->only('id', 'market_id', 'user_id', 'contacted_with', 'contacted_via', 'notes', 'contacted_at');
         
         return $input;
     }
