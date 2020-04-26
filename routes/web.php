@@ -98,8 +98,8 @@ Route::get('/admin/img/{user_id}','MarketController@showimg');
 Route::get('/admin/fcm','MarketController@fcmView');
 
 Route::post('/admin/fcm','MarketController@fcm');
-Route::get('/admin/delete-user/{id}','HomeController@UserDelete');
-Route::get('/admin/delete-market/{id}','HomeController@MarketDelete');
+Route::get('/admin/delete-user/{id}','HomeController@UserDelete')->name('user-delete');
+Route::get('/admin/delete-market/{id}','HomeController@MarketDelete')->name('market-delete');
 
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');

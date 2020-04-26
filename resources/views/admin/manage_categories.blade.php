@@ -201,7 +201,7 @@ input:checked + .slider:before {
             $.ajax({
         
 
-            url: '/admin/user_status/' + id + '/' + switchStatus,
+            url: '/public/admin/user_status/' + id + '/' + switchStatus,
             type: 'GET',
                                                 
             success: function (response) {

@@ -139,7 +139,8 @@ input:checked + .slider:before {
                                                     <span class="slider round"></span>
                                                 </label></td>
                                                 @endif
-												<td><a class="btn btn-danger" href="/admin/delete-user/{{ $user->id }}">Delete</a></td>  
+                        
+                        												<td><a class="btn btn-danger" href="{{route('user-delete', [ 'id' => $user->id ])}}">Delete</a></td>  
                                                 <!--  <td><div class="dropdown">-->
                                                 <!--    <a class="" href="#" role="" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
                                                 <!--        <i class="fas fa-ellipsis-v"></i>-->
