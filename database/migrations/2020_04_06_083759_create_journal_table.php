@@ -20,7 +20,7 @@ class CreateJournalTable extends Migration
             $table->string('contacted_with');
             $table->string('contacted_via');
             $table->text('notes');
-            $table->datetime('contacted_at');
+            $table->timestamp('contacted_at');
             $table->timestamps();
         });
     }
