@@ -171,21 +171,21 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link {{ Request::segment(2) === 'dashboard' ? 'active' : null }}" href="/admin/dashboard" ><i class=" fa-fw fa-rocket"></i>Dashboard </a>
+                                <a class="nav-link {{ Request::segment(2) === 'dashboard' ? 'active' : null }}" href="{{route('view-dashboard')}}" ><i class=" fa-fw fa-rocket"></i>Dashboard </a>
                                 
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::segment(2) === 'users' ? 'active' : null }}" href="/admin/users" ><i class="fa fa-fw fa-user-circle"></i>Manage Users</a>
+                                <a class="nav-link {{ Request::segment(2) === 'users' ? 'active' : null }}" href="{{route('view-user')}}" ><i class="fa fa-fw fa-user-circle"></i>Manage Users</a>
                                 
                             </li>
                                <li class="nav-item">
-                                <a class="nav-link {{ Request::segment(2) === 'market' ? 'active' : null }}" href="/admin/market" ><i class="fa fa-fw fa-user-circle"></i>View Markets</a>
+                                <a class="nav-link {{ Request::segment(2) === 'market' ? 'active' : null }}" href="{{route('view-market')}}" ><i class="fa fa-fw fa-user-circle"></i>View Markets</a>
                                 
                             </li>
 
                             </li>
                                <li class="nav-item">
-                                <a class="nav-link {{ Request::segment(2) === 'import' ? 'active' : null }}" href="/admin/import" ><i class="fa fa-fw fa-file"></i>Import Data</a>
+                                <a class="nav-link {{ Request::segment(2) === 'import' ? 'active' : null }}" href="{{route('import-data')}}" ><i class="fa fa-fw fa-file"></i>Import Data</a>
                                 
                             </li>
 
