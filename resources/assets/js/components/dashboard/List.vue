@@ -73,7 +73,7 @@
 										<th>Status</th>
 										<th>Action</th>
 										<th>View</th>
-										<th>Journal</th>
+										<!-- <th>Journal</th> -->
 									</tr>
 								</thead>
 								<tbody>
@@ -167,7 +167,7 @@
 										</td>
 
 
-										<td>
+<!-- 										<td>
 											<router-link
 												:to="{
 													name: 'journal.view',
@@ -179,7 +179,7 @@
 												View Journal
 											</router-link>
 										</td>
-
+ -->
 
 									</tr>
 								</tbody>
