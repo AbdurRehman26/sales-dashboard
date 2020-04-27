@@ -21,10 +21,10 @@ class UsersTableSeeder extends Seeder
             array (
                 'id' => 8,
                 'name' => 'Kashif',
-                'email' => 'muhammadkashif700010@gmail.com',
+                'email' => 'elysiussales2019@gmail.com',
                 'phone_number' => NULL,
                 'fcm_id' => NULL,
-                'password' => bcrypt('123456'),
+                'password' => bcrypt('elysiussales2019'),
                 'remember_token' => 'F8poPGkbyqQVMea9HiKE4BfERh1RRdvb4pvyL9nUEkQTAuTqHdEqe1xPOwSf',
                 'created_at' => '2019-09-28 05:27:36',
                 'updated_at' => '2019-09-28 05:27:36',
