@@ -140,7 +140,13 @@ input:checked + .slider:before {
                                                 </label></td>
                                                 @endif
                         
-                        												<td><a class="btn btn-danger" href="{{route('user-delete', [ 'id' => $user->id ])}}">Delete</a></td>  
+                        												<td>
+
+
+
+                                                  <a data-id="{{$user->id}}" class="delete-btn btn btn-danger"> Delete</a>
+
+                                                </td>
                                                 <!--  <td><div class="dropdown">-->
                                                 <!--    <a class="" href="#" role="" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
                                                 <!--        <i class="fas fa-ellipsis-v"></i>-->
@@ -239,6 +245,58 @@ input:checked + .slider:before {
 
 
 $(document).ready(function() {
+     
+
+
+  $('.delete-btn').click(function(){
+
+    var id = $(this).data('id');
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+
+      console.log(result);
+
+      if(result.value){
+
+
+      $.ajax({
+        
+
+            url: '/admin/delete-user/' + id,
+            type: 'GET',
+                                                
+            success: function (response) {
+
+            //console.log(response);
+            setTimeout(function(){
+
+            location.reload('/')
+
+            }, 500);
+
+                
+            }
+        });
+    
+          }
+
+
+      });
+
+  });
+
+
+
+
+
      $('#example').DataTable( {
         	dom: '<"top"lBf>rt<"bottom"ip><"clear">',
 			

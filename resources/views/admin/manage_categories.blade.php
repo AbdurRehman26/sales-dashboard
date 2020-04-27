@@ -89,11 +89,15 @@ input:checked + .slider:before {
                     <!-- content -->
                     <!-- ============================================================== -->
                     <div class="row">
-                        <!--<div class="offset-xl-10 col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12 m-b-30">-->
-                        <!--    <a href="/admin/add-category" class="btn btn-primary btn-lg float-right" id='trigger'><i class="fa fa-plus"></i> Add Category</a>-->
-                            
-                        <!--</div>-->
                         
+                        <div class="offset-xl-10 col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12 m-b-30">
+                            
+
+                        <a href="#" class="delete-all-btn btn-danger btn-lg float-right" id='trigger'> Delete Unassociated Markets</a>
+
+
+                        </div>                        
+
                     </div>
                    @include('flash_messages')
                     <div class="row">
@@ -248,6 +252,59 @@ input:checked + .slider:before {
 $(document).ready(function() {
 
 
+
+
+
+  $('.delete-all-btn').click(function(){
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete all!'
+    }).then((result) => {
+
+      console.log(result);
+
+      if(result.value){
+
+
+      $.ajax({
+        
+
+            url: '/admin/delete-all-markets',
+            type: 'GET',
+                                                
+            success: function (response) {
+
+            //console.log(response);
+            setTimeout(function(){
+
+            location.reload('/')
+
+            }, 500);
+
+                
+            }
+        });
+    
+          }
+
+
+      });
+
+  });
+
+
+
+
+
+
+
+
   $('.delete-btn').click(function(){
 
     var id = $(this).data('id');
@@ -263,6 +320,7 @@ $(document).ready(function() {
     }).then((result) => {
 
       console.log(result);
+      if(result.value){
 
 
       $.ajax({
@@ -283,6 +341,9 @@ $(document).ready(function() {
                 
             }
         });
+
+
+      }
     
 
       });

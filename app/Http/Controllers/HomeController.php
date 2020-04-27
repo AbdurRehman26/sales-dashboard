@@ -36,4 +36,14 @@ class HomeController extends Controller
 	 	$Market=Market::find($id)->delete();
 		return redirect()->intended('/admin/market');
 	}
+
+
+    public function MarketDeleteAll()
+    {
+        $userIds=User::all()->pluck('id')->toArray();
+        
+        Market::withTrashed()->whereNotIn('user_id', $userIds)->forceDelete();
+
+        return response()->json(['message' => true]);
+    }
 }
