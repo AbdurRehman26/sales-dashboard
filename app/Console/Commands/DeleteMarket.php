@@ -40,11 +40,7 @@ class DeleteMarket extends Command
     public function handle()
     {
 
-
-
         Market::onlyTrashed()->whereDate('deleted_at', '>=', Carbon::today()->addDays(3)->toDateString())->forceDelete();
-
-        dd(1);
 
     }
 }
