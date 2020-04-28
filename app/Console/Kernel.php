@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\DeleteMarket::class
+        Commands\DeleteMarket::class,
+        Commands\MarketNotify::class
     ];
 
     /**
@@ -26,7 +27,12 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('market:delete')
                  ->everyMinute();
+
+        $schedule->command('market:notify')
+                 ->daily();
+
     }
+
 
     /**
      * Register the commands for the application.

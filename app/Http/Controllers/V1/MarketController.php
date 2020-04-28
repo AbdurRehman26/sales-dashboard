@@ -54,10 +54,19 @@ class MarketController extends ApiResourceController{
     }
 
     public function input($value=''){
-        $input = request()->only('id', 'color', 'market_name', 'market_owner', 'owner_email', 'owner_phone', 'owner_address', 'contact_person_name', 'contact_person_phone', 'contact_person_email', 'other', 'notes', 'plz', 'market_type', 'img', 'pdf', 'other', 'audio');
+        $input = request()->only('id', 'expiry_date', 'color', 'market_name', 'market_owner', 'owner_email', 'owner_phone', 'owner_address', 'contact_person_name', 'contact_person_phone', 'contact_person_email', 'other', 'notes', 'plz', 'market_type', 'img', 'pdf', 'other', 'audio');
 
         $input['user_id'] = request()->user()->id;
         
+
+        if($value == 'store'){
+
+            $input['expiry_date'] = \Carbon\Carbon::now()->addDays(7)->toDateTimeString();
+
+        }
+
+
+
         return $input;
     }
 }

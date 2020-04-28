@@ -101,4 +101,59 @@ class MarketRepository extends AbstractRepository implements RepositoryContract
 
     }
 
+
+
+    public function sendFcm($data)
+    {
+
+          define( 'API_ACCESS_KEY', 'AAAAcdFMlcs:APA91bE3dmHng_0Hzb-tjDpCwT_76HwOsc9Gm4oMGCRnZFl1CyhujTjQCvr8IXa9LppLFpDjxJo8f1RBImp0TzowRLICe-uT3MyFlZdf9a4yFLcczOFIYDMBJgufV6ytVbTiyylzl8ae' );
+                    
+                
+                    #prep the bundle
+                     $msg = array
+                          (
+                           'body'   => 'Body  Of Notification',
+                                    'title' => $data->heading,
+                                    'body' => $data->content,
+                                   
+                                    
+                                    'icon'  => 'myicon',/*Default Icon*/
+                                    'sound' => 'mySound'/*Default sound*/
+                                  
+                          );
+          
+       
+      
+                    $fields = array
+                        (
+                            'to' => '/topics/test',
+                            'notification'  => $data->msg,
+                            'data' => array('body' => array($data->msg),'sound' => 'default')
+                        );
+            
+    
+                    $headers = array
+                        (
+                            'Authorization: key=' . API_ACCESS_KEY,
+                            'Content-Type: application/json'
+                        );
+                        
+                    #Send Reponse To FireBase Server
+                     
+                    $ch = curl_init();
+                    curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+                    curl_setopt( $ch,CURLOPT_POST, true );
+                    curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+                    curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+                    curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+                    
+                    
+                    curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
+                    $result = curl_exec($ch );
+                    curl_close( $ch );
+                    #Echo Result Of FireBase Server
+                    
+
+
+    }
 }

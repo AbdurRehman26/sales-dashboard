@@ -102,6 +102,11 @@ class ApiController extends Controller
 
         }
         
+        $expiryDate = \Carbon\Carbon::now()->addDays(7)->toDateTimeString();
+
+        $data['expiry_date'] = $expiryDate;
+
+
         $market = Market::create($data);
         return Response::json(compact('market'));
 
