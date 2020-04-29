@@ -6,6 +6,7 @@ import DashboardMain from '@/components/dashboard/List.vue'
 import MarketSingle from '@/components/dashboard/Single.vue'
 import JournalView from '@/components/journal/Single.vue'
 import JournalCreate from '@/components/journal/Create.vue'
+import UpdatePassword from './components/auth/UpdatePassword.vue'
 
 const router = new VueRouter({
     mode: 'history',
@@ -13,6 +14,14 @@ const router = new VueRouter({
     {
         path: '/customer/login',
         component: Login,
+        meta: {
+            forAuth: true
+        }
+    },
+    {
+        path: '/customer/change-password',
+        name: 'change.password',
+        component: UpdatePassword,
         meta: {
             forAuth: true
         }

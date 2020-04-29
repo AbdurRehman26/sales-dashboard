@@ -24,7 +24,9 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 
 
 Vue.component('spinner' , require('@/components/common/Spinner.vue'));
-
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
 
 require('../js/custom/dataTables/dataTables.min.js');
 

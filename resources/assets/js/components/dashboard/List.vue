@@ -90,19 +90,35 @@
 											{{ item.owner_address }}
 										</td>
 										<td>{{ item.notes }}</td>
-										<td>{{ item.other }}</td>
 										<td>
-											<a href="/admin/img/123">"img" </a>
+											
+											<img v-if="item.otherUrl" height="50" width="50" :src="item.otherUrl">
+											<span v-if="!item.otherUrl">N/A</span>
+
 										</td>
 										<td>
-											<a href="/admin/viewpdf/123">
-												"pdf"
-											</a>
+										
+											<img v-if="item.imgUrl" height="50" width="50" :src="item.imgUrl">
+											<span v-if="!item.imgUrl">N/A</span>
+
 										</td>
 										<td>
-											<a href="/admin/viewaudio/123"
-												>"audio"
-											</a>
+
+											<img v-if="item.pdfUrl" height="50" width="50" :src="item.pdfUrl">
+											<span v-if="!item.pdfUrl">N/A</span>
+
+
+										</td>
+										<td>
+
+											<audio v-if="item.audioUrl" :src="item.audioUrl" controls>
+											Audio
+											</audio>
+
+
+											<span v-if="!item.audioUrl">N/A</span>
+
+
 										</td>
 										<td>{{ item.formatted_created_at }}</td>
 										<td>{{ item.formatted_created_at }}</td>

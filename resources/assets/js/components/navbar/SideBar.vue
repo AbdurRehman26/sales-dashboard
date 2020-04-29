@@ -114,10 +114,13 @@
 									Settings
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#"
-										><i class="fas fa-key"></i> Change
-										Password
-									</a>
+
+									<router-link class="nav-link" tag="a" :to="{ name : 'change.password' }">
+										
+										Change Password
+
+									</router-link>	
+
 								</li>
 								<li class="nav-item">
 									<a

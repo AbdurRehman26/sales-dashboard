@@ -59,10 +59,36 @@ class MarketRepository extends AbstractRepository implements RepositoryContract
     {
 
         $data = parent::findById($id, $refresh, $details, $encode);
-        $data->formatted_created_at = \Carbon\Carbon::parse($data->created_at)->diffForHumans();
+        
+        $data->formatted_created_at = $data->created_at ? \Carbon\Carbon::parse($data->created_at)->diffForHumans() : \Carbon\Carbon::now()->toDateTimeString();
+
         $data->username = $data->user_id ? app('UserRepository')->findById($data->user_id)->name : '';
 
         $data->market_type_name = $data->market_type ? app('MarketTypeRepository')->findById($data->market_type)->name : '';
+
+        if($data->img){
+
+            $data->imgUrl = url('storage/'.config('uploads.default.public_relative') .  '/' . $data->img);
+
+        }
+
+        if($data->pdf){
+
+            $data->pdfUrl = url('storage/'.config('uploads.default.public_relative') .  '/' . $data->pdf);
+
+        }
+
+        if($data->other){
+
+            $data->otherUrl = url('storage/'.config('uploads.default.public_relative') .  '/' . $data->other);
+
+        }
+
+        if($data->audio){
+
+            $data->audioUrl = url('storage/'.config('uploads.default.public_relative') .  '/' . $data->audio);
+
+        }
 
         return $data;
     }

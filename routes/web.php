@@ -58,6 +58,7 @@ Route::get('/admin/users',function(){
 
 });
 
+Route::post('/user/change-password', 'Auth\LoginController@changePassword');
 
 Route::post('/admin/import', 'Api\V1\FileImportController@import')->name('import-data');
 Route::post('/market/assign', 'MarketController@assign');

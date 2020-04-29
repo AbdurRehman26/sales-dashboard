@@ -193,6 +193,7 @@
 							<upload-file
 								:title="'Pdf'"
 								@response="imageUploaded($event, 'pdf')"
+								:extensions="'pdf'"
 							></upload-file>
 						</div>
 
@@ -202,6 +203,7 @@
 							<upload-file
 								:title="'Audio'"
 								@response="imageUploaded($event, 'audio')"
+								:extensions="'audio/*'"
 							></upload-file>
 						</div>
 

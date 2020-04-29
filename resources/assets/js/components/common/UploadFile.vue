@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<label class="form-label" for="validationCustom05">{{title}} :</label>
-		<input @change="uploadFile" href="#" type="file" />
+		<input :accept="extensions" @change="uploadFile" href="#" type="file" />
 	</div>
 </template>
 
@@ -20,6 +20,10 @@ export default {
 		title : {
 			type : String,
 			default : 'Image'
+		},
+		extensions : {
+			type : String,
+			default : 'image/*'
 		}
 	}, // End of Component > props
 	/*
