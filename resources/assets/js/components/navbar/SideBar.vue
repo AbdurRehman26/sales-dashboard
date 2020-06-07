@@ -113,7 +113,7 @@
 								<li class="nav-divider">
 									Settings
 								</li>
-								<li class="nav-item">
+								<!-- <li class="nav-item">
 
 									<router-link class="nav-link" tag="a" :to="{ name : 'change.password' }">
 										
@@ -121,7 +121,7 @@
 
 									</router-link>	
 
-								</li>
+								</li> -->
 								<li class="nav-item">
 									<a
 										class="nav-link"
