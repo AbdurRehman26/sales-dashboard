@@ -147,10 +147,35 @@ input:checked + .slider:before {
                                                 @endif
 
 
-                                                <td><img alt="Claire Connors" src="/images/User-icon.png" class="avatar mr-3"></td>
-                                                <td><img alt="Claire Connors" src="/images/User-icon.png" class="avatar mr-3"></td>
-                                                <td><img alt="Claire Connors" src="/images/User-icon.png" class="avatar mr-3"></td>
-                                                <td><img alt="Claire Connors" src="/images/User-icon.png" class="avatar mr-3"></td>
+                                                <td>
+                                                
+                                                  @if($user->pFrontUrl)
+                                                  <img alt="Claire Connors" src="{{$user->pFrontUrl}}" class="avatar mr-3">
+                                                  @endif
+
+                                                </td>
+                                                <td>
+                                                
+                                                                                                  @if($user->pBackUrl)
+                                                  <img alt="Claire Connors" src="{{$user->pBackUrl}}" class="avatar mr-3">
+                                                  @endif
+
+                                                </td>
+                                                <td>
+                                                
+                                                                                                  @if($user->gFrontUrl)
+                                                  <img alt="Claire Connors" src="{{$user->gFrontUrl}}" class="avatar mr-3">
+                                                  @endif
+
+                                                </td>
+
+                                                <td>
+
+                                                                                                  @if($user->pBackUrl)
+                                                  <img alt="Claire Connors" src="{{$user->pBackUrl}}" class="avatar mr-3">
+                                                  @endif
+
+                                                </td>
                                                 
 
                         
