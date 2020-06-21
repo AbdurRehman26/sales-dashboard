@@ -115,6 +115,12 @@ input:checked + .slider:before {
                                                     <th>Town No</th>
                                                     <th>Street/House No </th>
                                                     <th>Active / In-Active</th>
+                                                    <th>P Front</th>
+                                                    <th>P Back </th>
+                                                    <th>G Front </th>
+                                                    <th>G Back </th>
+                                                    
+                                                    <th>Action</th>
 													<th></th>
                                                     
                                                 </tr>
@@ -139,6 +145,14 @@ input:checked + .slider:before {
                                                     <span class="slider round"></span>
                                                 </label></td>
                                                 @endif
+
+
+                                                <td><img alt="Claire Connors" src="/images/User-icon.png" class="avatar mr-3"></td>
+                                                <td><img alt="Claire Connors" src="/images/User-icon.png" class="avatar mr-3"></td>
+                                                <td><img alt="Claire Connors" src="/images/User-icon.png" class="avatar mr-3"></td>
+                                                <td><img alt="Claire Connors" src="/images/User-icon.png" class="avatar mr-3"></td>
+                                                
+
                         
                         												<td>
 
