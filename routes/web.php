@@ -57,22 +57,22 @@ Route::get('/admin/users',function(){
         foreach ($users as $key => $value) {
                 if($value->p_front){
                 
-                    $users[$kye]->pFrontUrl = url('storage/'.config('uploads.default.public_relative') .  '/' . $data->p_front);
+                    $users[$kye]->pFrontUrl = url('storage/'.config('uploads.default.public_relative') .  '/' . $value->p_front);
 
                 }
                 if($value->p_back){
                 
-                    $users[$kye]->pBackUrl = url('storage/'.config('uploads.default.public_relative') .  '/' . $data->p_back);
+                    $users[$kye]->pBackUrl = url('storage/'.config('uploads.default.public_relative') .  '/' . $value->p_back);
 
                 }
                 if($value->g_front){
                 
-                    $users[$kye]->gFrontUrl = url('storage/'.config('uploads.default.public_relative') .  '/' . $data->g_front);
+                    $users[$kye]->gFrontUrl = url('storage/'.config('uploads.default.public_relative') .  '/' . $value->g_front);
 
                 }
                 if($value->g_back){
                 
-                    $users[$kye]->gBackUrl = url('storage/'.config('uploads.default.public_relative') .  '/' . $data->g_back);
+                    $users[$kye]->gBackUrl = url('storage/'.config('uploads.default.public_relative') .  '/' . $value->g_back);
 
                 }
 
