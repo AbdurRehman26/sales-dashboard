@@ -6,6 +6,12 @@ use Kazmi\Data\Contracts\RepositoryContract;
 use Kazmi\Data\Repositories\AbstractRepository;
 use App\Data\Models\Market;
 
+use Illuminate\Support\Facades\Cache;
+
+use Carbon\Carbon;
+use DB;
+
+
 class MarketRepository extends AbstractRepository implements RepositoryContract
 {
     /**
@@ -58,8 +64,21 @@ class MarketRepository extends AbstractRepository implements RepositoryContract
     public function findById($id, $refresh = false, $details = false, $encode = true)
     {
 
-        $data = parent::findById($id, $refresh, $details, $encode);
-        
+        $data = Cache::get($this->_cacheKey.$id);
+
+        if ($data == NULL || $refresh == true) {
+            $query = $this->model->withTrashed()->find($id);
+            if ($query != NULL) {
+
+                $data = new \stdClass;
+                foreach ($query->getAttributes() as $column => $value) {
+                    $data->{$column} = $query->{$column};
+                }
+                Cache::forever($this->_cacheKey.$id, $data);
+            } else {
+            }
+        }
+         
         $data->formatted_created_at = $data->created_at ? \Carbon\Carbon::parse($data->created_at)->diffForHumans() : \Carbon\Carbon::now()->toDateTimeString();
 
         $data->username = $data->user_id ? app('UserRepository')->findById($data->user_id)->name : '';
@@ -116,12 +135,12 @@ class MarketRepository extends AbstractRepository implements RepositoryContract
 
         }
 
-
         if(!request()->user()->user_type){
 
-            $this->builder = $this->model->where('user_id', request()->user()->id);
+            $this->builder = $this->builder->where('user_id', request()->user()->id);
         
         }
+
 
         return parent::findByAll($pagination, $perPage, $input);
 
