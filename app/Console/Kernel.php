@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
                  ->everyFiveMinutes();
 
         $schedule->command('market:notify')
-                 ->daily();
+                 ->everyMinute();
 
     }
 
