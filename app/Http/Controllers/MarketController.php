@@ -417,7 +417,9 @@ class MarketController extends Controller
                     \Log::info(json_encode($fields));
                     
                     $result = curl_exec($ch );
-            		
+            	       
+                    \Log::info("Result");
+                    \Log::info(json_encode($result));
 
                     curl_close( $ch );
                     #Echo Result Of FireBase Server
