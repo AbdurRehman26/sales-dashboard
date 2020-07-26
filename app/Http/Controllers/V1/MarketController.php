@@ -61,7 +61,8 @@ class MarketController extends ApiResourceController{
 
         if($value == 'store'){
 
-            $input['expiry_date'] = \Carbon\Carbon::now()->addDays(7)->toDateTimeString();
+            //->addDays(7)
+            $input['expiry_date'] = \Carbon\Carbon::now()->toDateTimeString();
 
         }
 

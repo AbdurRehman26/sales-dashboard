@@ -101,8 +101,8 @@ class ApiController extends Controller
             $data['img'] = $imageName;
 
         }
-        
-        $expiryDate = \Carbon\Carbon::now()->addDays(7)->toDateTimeString();
+        //->addDays(7)
+        $expiryDate = \Carbon\Carbon::now()->toDateTimeString();
 
         $data['expiry_date'] = $expiryDate;
 
