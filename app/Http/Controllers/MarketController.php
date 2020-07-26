@@ -375,7 +375,7 @@ class MarketController extends Controller
                     #prep the bundle
                      $msg = array
                           (
-                    	   'body' 	=> 'Body  Of Notification',
+                    	   'message' 	=> 'Body  Of Notification',
                                     'title' => $request->heading,
                                     'body' => $request->content,
                                    
@@ -391,7 +391,7 @@ class MarketController extends Controller
                 		(
                 		    'to' => 'cNjBS2NKTqi5zIESbsK2dd:APA91bFOksjhapr2V5WB7PB_cQdovJlCXYuixatcUa4PEpc4VwCtACU5GBG7SikAWY-JQ9R4mj2N4DKYZMkzaUlWOBaLhUN0xqO-MXiVQAl1TxllV2nW2KrVLp1ZTMFFd9WCq9LVtD5J',
             				'notification'	=> $msg,
-                            'data' => array('body' => array($msg),'sound' => 'default')
+                            'data' => $msg
             			);
             
     
