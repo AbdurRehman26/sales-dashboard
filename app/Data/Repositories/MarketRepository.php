@@ -153,7 +153,8 @@ class MarketRepository extends AbstractRepository implements RepositoryContract
 
           define( 'API_ACCESS_KEY', 'AAAAcdFMlcs:APA91bE3dmHng_0Hzb-tjDpCwT_76HwOsc9Gm4oMGCRnZFl1CyhujTjQCvr8IXa9LppLFpDjxJo8f1RBImp0TzowRLICe-uT3MyFlZdf9a4yFLcczOFIYDMBJgufV6ytVbTiyylzl8ae' );
                     
-                
+                    
+                    \Log::info("Sending Fcm");
                     #prep the bundle
                      $msg = array
                           (
