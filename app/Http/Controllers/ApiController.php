@@ -119,7 +119,7 @@ class ApiController extends Controller
     }
      public function getMarkets($id){
 
-        $market = Market::where('user_id',$id)->get();
+        $market = Market::withTrashed()->where('user_id',$id)->get();
         $user = User::where('id',$id)->first();
         return Response::json(compact('market','user'));
 
