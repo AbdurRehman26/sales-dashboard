@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('market:delete')
-                 ->everyMinute();
+                 ->everyFiveMinute();
 
         $schedule->command('market:notify')
                  ->daily();
