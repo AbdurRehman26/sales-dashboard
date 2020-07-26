@@ -40,7 +40,7 @@ class DeleteMarket extends Command
     public function handle()
     {
 
-        echo Carbon::today()->toDateString();
+        \Log::info("Deleting market before : ");
         Market::onlyTrashed()->whereDate('deleted_at', '>=', Carbon::today()->toDateString())->forceDelete();
 
     }

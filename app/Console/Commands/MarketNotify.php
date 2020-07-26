@@ -52,7 +52,7 @@ class MarketNotify extends Command
 
 
         // dd(Carbon::now()->subDays(6)->toDateString());
-        $markets = Market::whereDate('expiry_date', Carbon::now()->subDays(6)->toDateString())->whereNotNull('is_expiry')->get();
+        $markets = Market::whereDate('expiry_date', Carbon::now()->toDateString())->whereNotNull('is_expiry')->get();
 
         foreach ($markets as $key => $market) {
 
