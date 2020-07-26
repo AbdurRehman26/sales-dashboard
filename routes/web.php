@@ -127,6 +127,10 @@ Route::get('/admin/fcm','MarketController@fcmView');
 Route::post('/admin/fcm','MarketController@fcm');
 Route::get('/admin/delete-user/{id}','HomeController@UserDelete')->name('user-delete');
 Route::get('/admin/delete-market/{id}/{reason}','HomeController@MarketDelete')->name('market-delete');
+Route::get('/admin/delete-hard-market/{id}','HomeController@MarketDeleteHard')->name('market-delete-hard');
+
+
+
 Route::get('/admin/delete-all-markets','HomeController@MarketDeleteAll')->name('market-delete-all');
 
 Route::get('/clear-cache', function() {

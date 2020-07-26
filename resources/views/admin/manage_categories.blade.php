@@ -315,19 +315,50 @@ $(document).ready(function() {
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonColor: 'green',
+      cancelButtonText: 'Hard Delete market',
+      cancelButtonColor: 'red',
+      confirmButtonText: 'Soft delete it!'
     }).then((result) => {
 
-      console.log(result);
-      if(result.value){
+
+
+
+      if(result.dismiss){
 
 
       $.ajax({
         
 
-            url: '/admin/delete-market/' + id + "/" +result.value,
+            url: '/admin/delete-hard-market/' + id,
+            type: 'GET',
+                                                
+            success: function (response) {
+
+            //console.log(response);
+            setTimeout(function(){
+
+            location.reload('/')
+
+            }, 500);
+
+                
+            }
+        });
+
+
+
+      }
+
+      if(result.value == "" || result.value){
+
+      var reason = result.value ? result.value : "None";
+
+
+      $.ajax({
+        
+
+            url: '/admin/delete-market/' + id + "/" +reason,
             type: 'GET',
                                                 
             success: function (response) {

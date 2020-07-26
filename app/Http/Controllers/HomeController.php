@@ -33,6 +33,17 @@ class HomeController extends Controller
 		return redirect()->intended('/admin/users');
     }
 
+    public function MarketDeleteHard($id)
+    {
+ 
+        $Market=Market::find($id)->forceDelete();
+
+        return redirect()->intended('/admin/market');
+
+    }
+
+
+
 	public function MarketDelete($id, $reason){
 
 
