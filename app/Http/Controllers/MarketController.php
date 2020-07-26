@@ -375,17 +375,21 @@ class MarketController extends Controller
                     #prep the bundle
                      $msg = array
                           (
-                    	   'message' 	=> 'Body  Of Notification',
                                     'title' => $request->heading,
-                                    'body' => $request->content,
-                                   
-                                    
+                                    'body' => $request->msg,        
                                  	'icon'	=> 'myicon',/*Default Icon*/
                                   	'sound' => 'mySound'/*Default sound*/
                                   
                           );
           
        
+                    $data = [
+                                    'title' => $request->heading,
+                                    'message' => $request->msg,        
+                                    'icon'  => 'myicon',/*Default Icon*/
+                                    'sound' => 'mySound'/*Default sound*/
+                    ];
+
       
             	    $fields = array
                 		(

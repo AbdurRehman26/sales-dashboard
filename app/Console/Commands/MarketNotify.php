@@ -57,9 +57,9 @@ class MarketNotify extends Command
         foreach ($markets as $key => $market) {
 
             $dataObject = new \StdClass();
-            $dataObject->heading = "Heading"; 
+            $dataObject->heading = "Expired"; 
             $dataObject->content = "content"; 
-            $dataObject->msg = "msg"; 
+            $dataObject->msg = "You Have a new Expired Market"; 
 
 
             app('MarketRepository')->sendFcm($dataObject);
