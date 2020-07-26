@@ -20,8 +20,8 @@ class MarketDataImport implements ToModel, WithStartRow, WithHeadingRow, WithEve
     public function model(array $row)
     {
 
-    	$marketType = \App\MarketTypes::where('name', $row["market_type"])->first();
-        
+        $marketType = \App\MarketTypes::where('name', $row["market_type"])->first();
+
         return new Market([
 				"market_name" => $row["market_name"], 
 				"market_type" => $marketType['id'] ?? 1, 
