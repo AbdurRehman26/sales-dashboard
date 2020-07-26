@@ -32,8 +32,19 @@ class HomeController extends Controller
         $user=User::find($id)->delete();
 		return redirect()->intended('/admin/users');
     }
-	public function MarketDelete($id){
+
+	public function MarketDelete($id, $reason){
+
+
+        if($reason){
+
+            Market::where('id', $id)->update(['delete_reason' => $reason]);
+
+        }
+
+
 	 	$Market=Market::find($id)->delete();
+
 		return redirect()->intended('/admin/market');
 	}
 

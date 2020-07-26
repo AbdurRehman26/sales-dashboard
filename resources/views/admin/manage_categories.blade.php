@@ -318,12 +318,7 @@ $(document).ready(function() {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
-    }).queue([
-  {
-    title: 'Deletion Reason',
-    text: 'Please enter reason'
-  },
-  ]).then((result) => {
+    }).then((result) => {
 
       console.log(result);
       if(result.value){
@@ -332,7 +327,7 @@ $(document).ready(function() {
       $.ajax({
         
 
-            url: '/admin/delete-market/' + id,
+            url: '/admin/delete-market/' + id + "/" +result.value,
             type: 'GET',
                                                 
             success: function (response) {

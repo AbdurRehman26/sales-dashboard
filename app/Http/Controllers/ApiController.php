@@ -119,8 +119,21 @@ class ApiController extends Controller
     }
      public function getMarkets($id){
 
+        $fcmId = request()->fcm_id;
+
+        if($fcmId){
+
+
+            User::where('id', $id)->update(['fcm_id' => $fcmId]);
+
+
+        }
+
         $market = Market::withTrashed()->where('user_id',$id)->get();
         $user = User::where('id',$id)->first();
+
+
+
         return Response::json(compact('market','user'));
 
     }
