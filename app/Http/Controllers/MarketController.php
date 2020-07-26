@@ -412,8 +412,14 @@ class MarketController extends Controller
                     
                     
             		curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
+
+                    \Log::info("FCM Data");
+                    \Log::info(json_encode($fields));
+                    
                     $result = curl_exec($ch );
-            		curl_close( $ch );
+            		
+
+                    curl_close( $ch );
                     #Echo Result Of FireBase Server
                     
                  
