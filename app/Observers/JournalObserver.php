@@ -17,7 +17,7 @@ class JournalObserver
     {
 
         $updateData['id'] = $journal['market_id'];
-        $updateData['expiry_date'] = \Carbon\Carbon::now()->addDays(7)->toDateTimeString();
+        $updateData['expiry_date'] = \Carbon\Carbon::parse($journal['contacted_at'])->toDateTimeString();
         $updateData['is_expiry'] = null;
 
         app('MarketRepository')->update($updateData);
