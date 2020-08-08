@@ -73,6 +73,13 @@ class JournalController extends ApiResourceController{
 
         $color = $input['color'];
 
+
+        $updateData['id'] = $journal['market_id'];
+        $updateData['color'] = $color;
+        
+        app('MarketRepository')->update($updateData);
+
+
         unset($input['color']);
 
         $this->validate($request, $rules, $messages);
