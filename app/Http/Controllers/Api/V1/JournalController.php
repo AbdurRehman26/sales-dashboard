@@ -61,6 +61,31 @@ class JournalController extends ApiResourceController{
     }
 
 
+    //Create single record
+    public function store(Request $request)
+    {
+        $request->request->add(['method_type' => 'store']);
+
+        $rules = $this->rules(__FUNCTION__);
+        $input = $this->input(__FUNCTION__);
+
+        $messages = $this->messages(__FUNCTION__);
+
+        $color = $input['color'];
+
+        unset($input['color']);
+
+        $this->validate($request, $rules, $messages);
+
+        $data = $this->_repository->create($input);
+
+        $output = ['data' => $data, 'message' => $this->responseMessages(__FUNCTION__)];
+
+        // HTTP_OK = 200;
+
+        return response()->json($output, Response::HTTP_OK);
+
+    }
 
     //Update single record
     public function update(Request $request, $id)
@@ -73,7 +98,7 @@ class JournalController extends ApiResourceController{
         $color = $input['color'];
 
         unset($input['color']);
-        
+
         $messages = $this->messages(__FUNCTION__);
 
         $this->validate($request, $rules, $messages);
