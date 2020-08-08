@@ -54,8 +54,37 @@ class JournalController extends ApiResourceController{
     }
 
     public function input($value=''){
+
         $input = request()->only('id', 'market_id', 'user_id', 'contacted_with', 'contacted_via', 'notes', 'contacted_at', 'color');
         
         return $input;
     }
+
+
+
+    //Update single record
+    public function update(Request $request, $id)
+    {
+        $request->request->add(['id' => $id]);
+
+        $input = $this->input(__FUNCTION__);
+        $rules = $this->rules(__FUNCTION__);
+
+        $color = $input['color'];
+
+        unset($input['color']);
+        
+        $messages = $this->messages(__FUNCTION__);
+
+        $this->validate($request, $rules, $messages);
+
+        $data = $this->_repository->update($input);
+        $output = ['data' => $data, 'message' => $this->responseMessages(__FUNCTION__)];
+
+        // HTTP_OK = 200;
+
+        return response()->json($output, 200);
+
+    }
+
 }
