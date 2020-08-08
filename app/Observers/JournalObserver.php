@@ -19,7 +19,7 @@ class JournalObserver
         \Log::info($journal);
 
         $updateData['id'] = $journal['market_id'];
-        $updateData['expiry_date'] = \Carbon\Carbon::parse(date_format($journal['contacted_at'],'d-m-Y H:i:s')->toDateTimeString();
+        $updateData['expiry_date'] = \Carbon\Carbon::parse(date_format($journal['contacted_at'],'d-m-Y H:i:s'))->toDateTimeString();
         $updateData['is_expiry'] = null;
 
         app('MarketRepository')->update($updateData);
