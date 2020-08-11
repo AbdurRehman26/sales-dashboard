@@ -15,6 +15,9 @@ use App\Market;
 use App\MarketTypes;
 
 
+Route::get('/current-timezone', function () {
+dd("Current Timezone",\Carbon\Carbon::now());
+});
 
 Route::get('/', function () {
     
