@@ -119,6 +119,7 @@ input:checked + .slider:before {
                                                     <th>Owner Email</th>
                                                     <th>Owner Phone</th>
                                                     <th>Owner Address</th>
+                                                    <th>Owner PLZ And Town Name</th>
                                                     <th>Status</th>
                                                     <th>Notes</th>
                                                     <th>Color</th>
@@ -142,6 +143,7 @@ input:checked + .slider:before {
                                                   <td>{{ $category->owner_email }}</td>
                                                   <td>{{ $category->owner_phone }}</td>
                                                   <td>{{ $category->owner_address }}</td>
+                                                  <td>{{ $category->plz }}</td>
                                                   <td>{{ $category->status }}</td>
                                                   <td>{{ $category->notes }}</td>
                                                   <td>{{ $category->color }}</td>
