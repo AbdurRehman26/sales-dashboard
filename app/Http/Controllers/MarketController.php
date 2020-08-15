@@ -370,65 +370,54 @@ class MarketController extends Controller
     }
      public function fcm(Request $request){
           define( 'API_ACCESS_KEY', 'AAAAcdFMlcs:APA91bE3dmHng_0Hzb-tjDpCwT_76HwOsc9Gm4oMGCRnZFl1CyhujTjQCvr8IXa9LppLFpDjxJo8f1RBImp0TzowRLICe-uT3MyFlZdf9a4yFLcczOFIYDMBJgufV6ytVbTiyylzl8ae' );
-                    
+                
                     #prep the bundle
                      $msg = array
                           (
+                           'body'   => 'Body  Of Notification',
                                     'title' => $request->heading,
-                                    'body' => $request->msg ? $request->msg : $request->content,        
+                                    'body' => $request->content,
+                                   
+                                    
+                                    'icon'  => 'myicon',//Default Icon/
+                                    'sound' => 'mySound'//Default sound/
                                   
                           );
           
        
-                    $data = [
-                                    'title' => $request->heading,
-                                    'message' => $request->msg ? $request->msg : $request->content,        
-                    ];
-
       
-
-            	    $fields = array
-                		(
-                		    'to' => 'd1khIIJuR6mSF8PXe6Y12x:APA91bHJOL_A_QDO4dgbTFQ1d3WKDaZVoBeJ58iJiTaa6NuhRtEf_pyMYcsjH3c-I35HQNFryoYWPcSP3fzv_xAgoHeN2YR66WcA0BYPMK9LAZ2frQV4gi4UsLSmprSabas8hH6WSTyh',
-            				'notification'	=> $msg,
-                            'data' => $msg
-            			);
+                    $fields = array
+                        (
+                            'to' => '/topics/test',
+                            'notification'  => $msg,
+                            'data' => array('body' => array($msg),'sound' => 'default')
+                        );
             
     
-        	        $headers = array
-                		(
-            				'Authorization: key=' . API_ACCESS_KEY,
-            				'Content-Type: application/json'
-            			);
+                    $headers = array
+                        (
+                            'Authorization: key=' . API_ACCESS_KEY,
+                            'Content-Type: application/json'
+                        );
                         
                     #Send Reponse To FireBase Server
                      
-            		$ch = curl_init();
-            		curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
-            		curl_setopt( $ch,CURLOPT_POST, true );
-            		curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
-            		curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
-            		curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+                    $ch = curl_init();
+                    curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+                    curl_setopt( $ch,CURLOPT_POST, true );
+                    curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+                    curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+                    curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
                     
                     
-            		curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
-
-                    \Log::info("FCM Data");
-                    \Log::info(json_encode($fields));
-                    
+                    curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
                     $result = curl_exec($ch );
-            	       
-                    \Log::info("Result");
-                    \Log::info(json_encode($result));
-
                     curl_close( $ch );
                     #Echo Result Of FireBase Server
-                    
                  
          
          return view('admin.create_category');
     }
-
 
     public function assign(Request $request)
     {
