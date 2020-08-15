@@ -151,36 +151,39 @@ class MarketRepository extends AbstractRepository implements RepositoryContract
     public function sendFcm($data)
     {
 
-          define( 'API_ACCESS_KEY', 'AAAAcdFMlcs:APA91bE3dmHng_0Hzb-tjDpCwT_76HwOsc9Gm4oMGCRnZFl1CyhujTjQCvr8IXa9LppLFpDjxJo8f1RBImp0TzowRLICe-uT3MyFlZdf9a4yFLcczOFIYDMBJgufV6ytVbTiyylzl8ae' );
+          define( 'API_ACCESS_KEY', 'd1khIIJuR6mSF8PXe6Y12x:APA91bHJOL_A_QDO4dgbTFQ1d3WKDaZVoBeJ58iJiTaa6NuhRtEf_pyMYcsjH3c-I35HQNFryoYWPcSP3fzv_xAgoHeN2YR66WcA0BYPMK9LAZ2frQV4gi4UsLSmprSabas8hH6WSTyh');
                     
+                    $user = \App\User::find($data->userId);
+
                     
                     \Log::info("Sending Fcm");
                     #prep the bundle
-                     $msg = array
+                     $notification = array
                           (
-                           'body'   => 'Body  Of Notification',
                                     'title' => $data->heading,
-                                    'body' => $data->content,
-                                   
-                                    
-                                    'icon'  => 'myicon',/*Default Icon*/
-                                    'sound' => 'mySound'/*Default sound*/
-                                  
+                                    'body' => $data->content,                                  
                           );
           
-       
+                     $data = array
+                          (
+                                    'message' => $data->heading,
+                                    'body' => $data->content,                                  
+                          );
+                    
+                    $accessToken = !empty($user) && $user['fcm_id'] ? $user['fcm_id'] : API_ACCESS_KEY;
+
       
                     $fields = array
                         (
-                            'to' => '/topics/test',
-                            'notification'  => $data->msg,
-                            'data' => array('body' => array($data->msg),'sound' => 'default')
+                            'to' => $accessToken,
+                            'notification'  => $notification,
+                            'data' => $data
                         );
             
     
                     $headers = array
                         (
-                            'Authorization: key=' . API_ACCESS_KEY,
+                            'Authorization: key = AAAAcdFMlcs:APA91bE3dmHng_0Hzb-tjDpCwT_76HwOsc9Gm4oMGCRnZFl1CyhujTjQCvr8IXa9LppLFpDjxJo8f1RBImp0TzowRLICe-uT3MyFlZdf9a4yFLcczOFIYDMBJgufV6ytVbTiyylzl8ae',
                             'Content-Type: application/json'
                         );
                         
@@ -198,7 +201,6 @@ class MarketRepository extends AbstractRepository implements RepositoryContract
                     $result = curl_exec($ch );
                     curl_close( $ch );
                     #Echo Result Of FireBase Server
-                    
 
 
     }

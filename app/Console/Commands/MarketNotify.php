@@ -38,7 +38,7 @@ class MarketNotify extends Command
      * @return mixed
      */
     public function handle()
-    {
+    {   
 
         $markets = Market::whereDate('expiry_date', Carbon::now()->toDateString())->whereNull('is_expiry')->get();
 
@@ -47,24 +47,20 @@ class MarketNotify extends Command
             $updateData['is_expiry'] = true;
             $updateData['num_of_times_expired'] = $market['num_of_times_expired'] ? $market['num_of_times_expired']+1 : 1;
 
-            app('MarketRepository')->update($updateData);
-        }
+           app('MarketRepository')->update($updateData);
 
-
-        // dd(Carbon::now()->subDays(6)->toDateString());
-        $markets = Market::whereDate('expiry_date', Carbon::now()->toDateString())->whereNotNull('is_expiry')->get();
-
-        foreach ($markets as $key => $market) {
 
             $dataObject = new \StdClass();
             $dataObject->heading = "Expired"; 
             $dataObject->content = "content"; 
-            $dataObject->msg = "You Have a new Expired Market"; 
-
+            $dataObject->msg = "You Have a new Expired Market";
+            $dataObject->userId = $market['user_id'];
 
             app('MarketRepository')->sendFcm($dataObject);
 
         }
+
+        // dd(Carbon::now()->subDays(6)->toDateString());
 
 
     }
