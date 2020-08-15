@@ -371,29 +371,25 @@ class MarketController extends Controller
      public function fcm(Request $request){
           define( 'API_ACCESS_KEY', 'AAAAcdFMlcs:APA91bE3dmHng_0Hzb-tjDpCwT_76HwOsc9Gm4oMGCRnZFl1CyhujTjQCvr8IXa9LppLFpDjxJo8f1RBImp0TzowRLICe-uT3MyFlZdf9a4yFLcczOFIYDMBJgufV6ytVbTiyylzl8ae' );
                     
-                
                     #prep the bundle
                      $msg = array
                           (
                                     'title' => $request->heading,
-                                    'body' => $request->msg,        
-                                 	'icon'	=> 'myicon',/*Default Icon*/
-                                  	'sound' => 'mySound'/*Default sound*/
+                                    'body' => $request->msg ? $request->msg : $request->content,        
                                   
                           );
           
        
                     $data = [
                                     'title' => $request->heading,
-                                    'message' => $request->msg,        
-                                    'icon'  => 'myicon',/*Default Icon*/
-                                    'sound' => 'mySound'/*Default sound*/
+                                    'message' => $request->msg ? $request->msg : $request->content,        
                     ];
 
       
+      
             	    $fields = array
                 		(
-                		    'to' => 'cNjBS2NKTqi5zIESbsK2dd:APA91bFOksjhapr2V5WB7PB_cQdovJlCXYuixatcUa4PEpc4VwCtACU5GBG7SikAWY-JQ9R4mj2N4DKYZMkzaUlWOBaLhUN0xqO-MXiVQAl1TxllV2nW2KrVLp1ZTMFFd9WCq9LVtD5J',
+                		    'to' => 'd1khIIJuR6mSF8PXe6Y12x:APA91bHJOL_A_QDO4dgbTFQ1d3WKDaZVoBeJ58iJiTaa6NuhRtEf_pyMYcsjH3c-I35HQNFryoYWPcSP3fzv_xAgoHeN2YR66WcA0BYPMK9LAZ2frQV4gi4UsLSmprSabas8hH6WSTyh',
             				'notification'	=> $msg,
                             'data' => $msg
             			);
@@ -426,6 +422,7 @@ class MarketController extends Controller
                     \Log::info(json_encode($result));
 
                     curl_close( $ch );
+                    dd($result, $fields);
                     #Echo Result Of FireBase Server
                     
                  
