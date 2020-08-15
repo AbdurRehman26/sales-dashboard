@@ -386,7 +386,7 @@ class MarketController extends Controller
                     ];
 
       
-      
+
             	    $fields = array
                 		(
                 		    'to' => 'd1khIIJuR6mSF8PXe6Y12x:APA91bHJOL_A_QDO4dgbTFQ1d3WKDaZVoBeJ58iJiTaa6NuhRtEf_pyMYcsjH3c-I35HQNFryoYWPcSP3fzv_xAgoHeN2YR66WcA0BYPMK9LAZ2frQV4gi4UsLSmprSabas8hH6WSTyh',
@@ -422,7 +422,6 @@ class MarketController extends Controller
                     \Log::info(json_encode($result));
 
                     curl_close( $ch );
-                    dd($result, $fields);
                     #Echo Result Of FireBase Server
                     
                  
