@@ -51,9 +51,9 @@ class MarketNotify extends Command
 
 
             $dataObject = new \StdClass();
-            $dataObject->heading = "Expired"; 
-            $dataObject->content = "content"; 
-            $dataObject->msg = "You Have a new Expired Market";
+            $dataObject->heading = "You Have a new Expired Market"; 
+            $dataObject->content = "Expired"; 
+            $dataObject->msg = "Expired";
             $dataObject->userId = $market['user_id'];
 
             app('MarketRepository')->sendFcm($dataObject);

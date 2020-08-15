@@ -14,7 +14,7 @@ class AlterTableMarketsFieldNull extends Migration
     public function up()
     {
         Schema::table('markets', function (Blueprint $table) {
-                $table->string('plz', 222)->nullable();
+                $table->string('plz', 222)->nullable()->change();
         });
     }
 
@@ -26,7 +26,7 @@ class AlterTableMarketsFieldNull extends Migration
     public function down()
     {
         Schema::table('markets', function (Blueprint $table) {
-            $table->string('plz', 222)->default('');
+            $table->string('plz', 222)->default('')->change();
         });
     }
 }
